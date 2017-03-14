@@ -1,0 +1,34 @@
+<div layout="column" layout-fill>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-icon aria-label="Icon" class="material-icons">public</md-icon>
+			<span>CarparKing</span>
+			<span flex></span>
+			<md-button ng-href="#/register">
+				Register
+			</md-button>
+			<md-button ng-href="#/">
+				Home
+			</md-button>
+		</div>
+	</md-toolbar>
+	<div layout="row" layout-align="center center">
+		<md-content>
+			<div id="mainLoginFormContainer">
+				<form action="/Login" method="post" id="mainLoginForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column'>
+					<md-input-container flex='105'>
+						<input type="email" class="validate" name="username" id="username" required="required">
+						<label>Mail :</label>
+					</md-input-container>
+					<md-input-container flex='105'>
+						<input name="password" id="password" type="password" class="validate" required="required" />
+						<label>Password :</label>	
+					</md-input-container>
+				    <div class="footerMainLoginForm">
+				    	<md-button type='submit' class=" md-raised md-hue-1">Connexion</md-button>
+					</div>
+				</form>
+			<div>
+		</md-content>
+	</div>
+</div>
