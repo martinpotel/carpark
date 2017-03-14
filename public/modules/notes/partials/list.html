@@ -1,0 +1,28 @@
+<div layout="column" layout-fill>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<span>Mes notes</span>
+			<span flex></span>
+			<md-button ng-href="#/">
+				Accueil
+			</md-button>
+			<md-button ng-click="archivedNotes()">
+				Notes archivées
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-content>
+		<md-list>
+			<md-list-item class="md-2-line" ng-repeat="note in notes" ng-href="#/note-edit/{{ note.id }}">
+				<div class="md-list-item-text" layout="column">
+					<h3>{{ note.title }}</h3>
+					<p ng-bind-html="note.text | nl2br"></p>
+				</div>
+			</md-list-item>
+		</md-list>
+	</md-content>
+
+	<md-button aria-label="Ajouter une note" class="md-fab md-accent" style="position:fixed; top:100%; left:100%; margin-top:-80px; margin-left:-80px;" ng-href="#/add-note">
+		<md-icon>add</md-icon>
+	</md-button>
+</div>

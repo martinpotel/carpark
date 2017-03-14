@@ -1,0 +1,42 @@
+<div layout="column" layout-fill>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-icon aria-label="Icon" class="material-icons">public</md-icon>
+			<span>CarparKing</span>
+			<span flex></span>
+			<md-button ng-href="#/notes">
+				Login
+			</md-button>
+			<md-button ng-href="#/notes">
+				Register
+			</md-button>
+			<md-button ng-href="#/notes">
+				<md-icon aria-label="Icon" class="material-icons">local_parking</md-icon>
+				Rent your parking
+			</md-button>
+		</div>
+	</md-toolbar>
+
+		Bienvenue {{ userName }}.
+
+	<div layout="row" layout-align="center center">
+	
+	  	<input vs-google-autocomplete ng-model="adress" ng-change="printAdress()" name="address" type="text">
+	  	<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
+	  	<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
+	  	<md-button ng-href="#/notes">
+			search
+			<md-icon aria-label="Icon" class="material-icons">search</md-icon>
+		</md-button>
+	</div>
+
+	<div layout="row" layout-align="center center">
+		<h1>
+			<span ng-if="adress!==undefined">{{adress}}</span><br/>
+			<span ng-if="dateStart!==undefined">{{dateStart}}</span>
+			<span ng-if="dateEnd!==undefined">-> {{dateEnd}}</span> 
+		</h1>
+	</div>
+
+</div>
+

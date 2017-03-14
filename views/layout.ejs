@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="rgeApp">
+	<head>
+		<title>CarparKing</title>
+
+		<!-- Styling -->
+		<link rel="stylesheet" href="/components/angular-material/angular-material.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="theme-color" content="#607d8b" />
+	    <meta name="mobile-web-app-capable" content="yes">
+
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	    <link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css" media="screen,projection" />
+
+	    <!-- requires bower components -->
+		<script type="text/javascript" src="/components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="/components/angular-sanitize/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="/components/angular-route/angular-route.min.js"></script>
+		<script type="text/javascript" src="/components/angular-cookies/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="/components/angular-animate/angular-animate.min.js"></script>
+		<script type="text/javascript" src="/components/angular-aria/angular-aria.min.js"></script>
+		<script type="text/javascript" src="/components/angular-material/angular-material.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		<script type="text/javascript" src="/components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
+
+
+		<!-- require app modules -->
+		<script type="text/javascript" src="/modules/home/homeModule.js"></script>
+		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
+		<script type="text/javascript" src="/app.js"></script>
+	</head>
+
+	<body ng-view>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "testnodejs",
+  "description": "",
+  "main": "app.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~1.0.5",
+    "angular": "1.5.0",
+    "angular-sanitize": "~1.5.0",
+    "angular-cookies": "~1.5.0",
+    "angular-animate": "~1.5.0",
+    "angular-route": "~1.5.0"
+  },
+  "resolutions": {
+    "angular": "1.5.0"
+  }
+}
