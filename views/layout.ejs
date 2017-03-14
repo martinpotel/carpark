@@ -14,6 +14,8 @@
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css" media="screen,projection" />
 
+	     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBjLw7EMEGCVZr2Gw4ZNf-ywHhBuHEYAUo"></script>
+
 	    <!-- requires bower components -->
 		<script type="text/javascript" src="/components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="/components/angular-sanitize/angular-sanitize.min.js"></script>
@@ -23,15 +25,17 @@
 		<script type="text/javascript" src="/components/angular-aria/angular-aria.min.js"></script>
 		<script type="text/javascript" src="/components/angular-material/angular-material.min.js"></script>
 		<script type="text/javascript" src="/components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBjLw7EMEGCVZr2Gw4ZNf-ywHhBuHEYAUo"></script>
 
 		<!-- require app modules -->
 		<script type="text/javascript" src="/modules/home/homeModule.js"></script>
 		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
+		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
+		<script type="text/javascript" src="/modules/register/registerModule.js"></script>
 		<script type="text/javascript" src="/app.js"></script>
 	</head>
 
 	<body ng-view>
+
 	</body>
 </html>
 
