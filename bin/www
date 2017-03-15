@@ -9,7 +9,7 @@ var url = process.env.MONGOLAB_URI;
 
 
 MongoClient.connect("mongodb://localhost/carparkingDB", function(error, db) {
-    if (error) console.log("error");
+    if (error) console.log(error);
     console.log("Connected to carparkingDB");
     app.locals.db = db;
 
