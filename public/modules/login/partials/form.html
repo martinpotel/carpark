@@ -16,13 +16,13 @@
 		<md-content>
 			<div id="mainLoginFormContainer">
 				<form action="/Login" method="post" id="mainLoginForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column'>
-					<md-input-container flex='105'>
-						<input type="email" class="validate" name="username" id="username" required="required">
-						<label>Mail :</label>
+					<md-input-container flex='105' md-no-float>
+						<md-icon aria-label="Icon" class="material-icons">email</md-icon>
+						<input type="email" class="validate" placeholder="Mail" required="required">
 					</md-input-container>
-					<md-input-container flex='105'>
-						<input name="password" id="password" type="password" class="validate" required="required" />
-						<label>Password :</label>	
+					<md-input-container flex='105' md-no-float>
+						<md-icon aria-label="Icon" class="material-icons">lock</md-icon>
+						<input name="password" class="validate" placeholder="Password" type="password" required="required" />
 					</md-input-container>
 				    <div class="footerMainLoginForm">
 				    	<md-button type='submit' class=" md-raised md-hue-1">Connexion</md-button>
