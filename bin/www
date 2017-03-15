@@ -2,9 +2,19 @@
 var debug = require('debug')('myapp');
 var app = require('../app');
 var server = require('http').Server(app);
+var MongoClient = require("mongodb").MongoClient;
 
 var port = process.env.PORT || 3000
+var url = process.env.MONGOLAB_URI;
 
-server.listen(port, function() {
-    console.log("App is running on port " + port);
+
+MongoClient.connect("mongodb://localhost/carparkingDB", function(error, db) {
+    if (error) return funcCallback(error);
+    console.log("Connected to carparkingDB");
+    app.locals.db = db;
+
+    server.listen(port, function() {
+    	console.log("App is running on port " + port);
+	});
 });
+

@@ -17,6 +17,11 @@
 		</div>
 	</md-toolbar>
 	<div layout="row" layout-align="center center">
+		<h4> Welcome {{user.firstname}} {{user.lastname}}</h4>
+	</div>
+
+
+	<div layout="row" layout-align="center center">
 	
 	  	<input vs-google-autocomplete ng-model="adress" ng-change="printAdress()" name="address" type="text">
 	  	<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
@@ -33,6 +38,8 @@
 			<span ng-if="dateStart!==undefined">{{dateStart}}</span>
 			<span ng-if="dateEnd!==undefined">-> {{dateEnd}}</span> 
 		</h1>
+
+		<ng-map center="[40.74, -74.18]"></ng-map>
 	</div>
 
 

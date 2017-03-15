@@ -4,6 +4,23 @@ var fs = require('fs');
 var path = require('path');
 var databasePath = path.resolve(__dirname, '../database/notes.json');
 
+
+router.get('/users', function(req, res) {
+	var db = req.app.locals.db;
+	var users = db.collection('users');	
+	users.find({}).toArray(function(err, result) {
+		if(result == null) res.send({'error': 'Not found'});
+		else {
+			res.send(result);
+		}
+	});
+});
+
+
+
+
+
+
 /*
 	Get list of notes from database
 	Database is a single JSON file containing an array of notes
@@ -25,6 +42,11 @@ router.get('/note/:id', function(req, res) {
 	if(result != null) res.send(result);
 	else res.send('Error : not found');
 });
+
+router.get('/users', function(req, res) {
+
+});
+
 
 /*
 	Add or edit an existing note

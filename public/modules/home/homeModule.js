@@ -2,7 +2,7 @@
 	Home page display
 */
 
-var homeModule = angular.module('homeModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete']);
+var homeModule = angular.module('homeModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete', 'ngMap']);
 
 /* Routing */
 homeModule.config(['$routeProvider', function($routeProvider) {
@@ -16,7 +16,12 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 /*
 	Displays home page and username
 */
-homeModule.controller('HomeController', ['$scope', function($scope) {
-	$scope.userName = 'Jean';
+homeModule.controller('HomeController', ['$scope','$http', function($scope, $http) {
+	$http.get('/api/users/').success(function(data) {
+		$scope.users = data;
+		$scope.user = data[0];
+	});
+
+	
 }]);
 
