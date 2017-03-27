@@ -5,6 +5,7 @@ var path = require('path');
 var databasePath = path.resolve(__dirname, '../database/notes.json');
 
 
+// home
 router.get('/users', function(req, res) {
 	var db = req.app.locals.db;
 	var users = db.collection('users');	
@@ -15,10 +16,6 @@ router.get('/users', function(req, res) {
 		}
 	});
 });
-
-
-
-
 
 
 /*

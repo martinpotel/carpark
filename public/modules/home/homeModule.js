@@ -17,11 +17,9 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 	Displays home page and username
 */
 homeModule.controller('HomeController', ['$scope','$http', function($scope, $http) {
-	$http.get('/api/users/').success(function(data) {
-		$scope.users = data;
-		$scope.user = data[0];
-	});
 
-	
+	$http.get('/user/logged-user/').success(function(data){
+		$scope.user = data;
+	});	
 }]);
 

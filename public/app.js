@@ -3,7 +3,7 @@ var rgeApp = angular.module('rgeApp', ['ngRoute', 'ngSanitize', 'ngCookies', 'ng
 /* Angular material theme */
 rgeApp.config(function($mdThemingProvider) {
 	$mdThemingProvider
-		.theme('default')
+		.theme('forest')
 		.primaryPalette('lime')
 		.accentPalette('brown');
 });

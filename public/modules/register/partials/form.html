@@ -15,10 +15,10 @@
 	<div layout="row" layout-align="center center">
 		<md-content>
 			<div id="mainLoginFormContainer">
-				<form action="/Login" method="post" id="mainLoginForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column'>
+				<form id="mainRegisterForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column' ng-submit="submitForm(mainRegisterForm.$valid)">
 					
 					<md-input-container flex='105' >
-						<md-radio-group ng-model="data.group1" layout="row">
+						<md-radio-group ng-model="newUser.gender" layout="row">
 	      					<md-radio-button value="male" class="md-primary">Male</md-radio-button>
 	      					<md-radio-button value="female" class="md-primary">Female</md-radio-button>
 	    				</md-radio-group>
@@ -28,29 +28,39 @@
 
 						<md-input-container flex='105' md-no-float>
 							<md-icon aria-label="Icon" class="material-icons">person</md-icon>
-							<input type="text" class="validate" placeholder="First Name" required="required">
+							<input type="text" class="validate" placeholder="First Name" required="required" ng-model="newUser.firstname">
 						</md-input-container>
 						<md-input-container flex='105' md-no-float>
-							<input type="text" class="validate" placeholder="Last Name" required="required">
+							<input type="text" class="validate" placeholder="Last Name" required="required" ng-model="newUser.lastname">
 						</md-input-container>
 					</div>
 					<md-input-container flex='105' md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">email</md-icon>
-						<input type="email" class="validate" placeholder="Mail" required="required">
+						<input name="mail" type="email" class="validate" placeholder="Mail" required="required" ng-model="newUser.mail">
 					</md-input-container>
 					<md-input-container md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">phone</md-icon>
-      					<input ng-model="user.phone" type="text" placeholder="Phone Number">
+      					<input ng-model="newUser.phone" type="text" placeholder="Phone Number" required="required" ng-model="newUser.mail">
     				</md-input-container>
+
+
 					<md-input-container flex='105' md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">lock</md-icon>
-						<input name="password" class="validate" type="password" placeholder="Password" required="required" />
+						<input name="password" class="validate" type="password" placeholder="Password" required="required" ng-model="newUser.password"/>
 					</md-input-container>
+
 					<md-input-container flex='105' md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">lock</md-icon>
-						<input name="password" placeholder="Password" type="password" class="validate" required="required" />
+						<input name="passwordConfirm" placeholder="Password" type="password" class="validate" required="required" ng-model="newUser.passwordConfirm" />
 					</md-input-container>
-				    <div class="footerMainLoginForm">
+					
+
+					<div ng-message ng-show="mainLoginForm.passwordConfirm.$valid && newUser.password!==newUser.passwordConfirm">
+						<p style="size:1%;color:red">Passwords do not match</p>
+					</div>
+
+
+				    <div class="footerMainLoginForm" ng-show="mainLoginForm.$valid && newUser.password===newUser.passwordConfirm">
 				    	<md-button type='submit' class=" md-raised md-hue-1">Submit</md-button>
 					</div>
 				</form>
