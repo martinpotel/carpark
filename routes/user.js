@@ -51,7 +51,8 @@ passport.use(new LocalStrategy({passReqToCallback: true},
 ));
 
 router.get('/logged-user/', function (req, res) {
-    res.send(req.user);
+    if (typeof req.user === 'undefined') res.send('undefined');
+    else res.send(req.user);
 });
 
 
@@ -60,6 +61,12 @@ router.post('/Login', passport.authenticate('local', {
     failureRedirect: '/#/login',
     failureFlash: true
 }));
+
+router.get('/Logout', function(req, res){
+    req.flash('info', 'Logged out');
+    req.logout();
+    res.redirect('/');
+});
 
 
 module.exports = router;

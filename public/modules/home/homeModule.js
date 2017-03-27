@@ -19,6 +19,7 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 homeModule.controller('HomeController', ['$scope','$http', function($scope, $http) {
 
 	$http.get('/user/logged-user/').success(function(data){
+		console.log(data);
 		$scope.user = data;
 	});	
 }]);

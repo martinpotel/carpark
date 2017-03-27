@@ -4,19 +4,25 @@
 			<md-icon aria-label="Icon" class="material-icons">public</md-icon>
 			<span>CarparKing</span>
 			<span flex></span>
-			<md-button ng-href="#/login">
+
+			<md-button ng-if="user==='undefined'" ng-href="#/login">
 				Login
 			</md-button>
-			<md-button ng-href="#/register">
+			<md-button ng-if="user==='undefined'" ng-href="#/register">
 				Register
 			</md-button>
+			<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+				Logout
+			</md-button>
+
+
 			<md-button ng-href="#/notes">
 				<md-icon aria-label="Icon" class="material-icons">local_parking</md-icon>
 				Rent your parking
 			</md-button>
-		</div>
+		</div> 
 	</md-toolbar>
-	<div layout="row" layout-align="center center">
+	<div ng-if="user!=='undefined'" layout="row" layout-align="center center">
 		<h4> Welcome {{user.firstname}} {{user.lastname}}</h4>
 	</div>
 
