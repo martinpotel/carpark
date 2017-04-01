@@ -18,9 +18,22 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 */
 homeModule.controller('HomeController', ['$scope','$http', function($scope, $http) {
 
-	$http.get('/user/logged-user/').success(function(data){
-		console.log(data);
-		$scope.user = data;
+
+
+	$http.get('/user/logged-user/').success(function(usr){
+		$http.get('/parking/all').success(function(parks) {
+			$scope.parkings = parks;
+			$scope.user = usr;
+			$scope.parkSelected = $scope.parkings[0];
+			console.log($scope.parkings);
+		});	
 	});	
+
+	$scope.selectPark = function (p) {
+		$scope.parkSelected = p;
+	}
+
+
+
 }]);
 

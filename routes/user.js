@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
-var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
@@ -53,6 +52,15 @@ passport.use(new LocalStrategy({passReqToCallback: true},
 router.get('/logged-user/', function (req, res) {
     if (typeof req.user === 'undefined') res.send('undefined');
     else res.send(req.user);
+});
+
+
+router.post('/create-user/', function (req, res) {
+    var db = req.app.locals.db;
+    console.log(req);   
+    db.collection('users').save(req.body.newUser, function(err, tuto) {
+        res.send('ok');
+    });
 });
 
 

@@ -6,6 +6,8 @@
 		<!-- Styling -->
 		<link rel="stylesheet" href="/components/angular-material/angular-material.min.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css" media="screen,projection" />
+
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<meta name="theme-color" content="#607d8b" />
@@ -14,8 +16,10 @@
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	    <link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css" media="screen,projection" />
 
-	     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBjLw7EMEGCVZr2Gw4ZNf-ywHhBuHEYAUo"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBjLw7EMEGCVZr2Gw4ZNf-ywHhBuHEYAUo"></script>
+	    <script type="text/javascript" src="/components/jquery/dist/jquery.min.js"></script>
 
+	     
 	    <!-- requires bower components -->
 		<script type="text/javascript" src="/components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="/components/angular-sanitize/angular-sanitize.min.js"></script>
@@ -32,11 +36,37 @@
 		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
 		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
 		<script type="text/javascript" src="/modules/register/registerModule.js"></script>
+		<script type="text/javascript" src="/modules/rent/rentModule.js"></script>
 		<script type="text/javascript" src="/app.js"></script>
 	</head>
 
-	<body ng-view>
+	<body >
+		<md-toolbar layout="row" class="md-whiteframe-3dp">		
+			<div class="md-toolbar-tools">
 
+				<md-button ng-href="#/">
+					<md-icon aria-label="Icon" class="material-icons">public</md-icon>
+					<span>CarparKing</span>
+					
+				</md-button>
+				<span flex></span>
+				<md-button ng-if="user==='undefined'" ng-href="#/login">
+					Login
+				</md-button>
+				<md-button ng-if="user==='undefined'" ng-href="#/register">
+					Register
+				</md-button>
+				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+					Logout
+				</md-button>
+				<md-button ng-href="#/rent">
+					<md-icon aria-label="Icon" class="material-icons">local_parking</md-icon>
+					Rent your parking
+				</md-button>
+			</div> 
+		</md-toolbar>
+		<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
+		<div ng-view class="container fadeIn" style="padding-bottom:40px;" flex></div>
 	</body>
 </html>
 

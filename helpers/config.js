@@ -8,16 +8,3 @@ exports.paygreen = {
 	'baseurl': 'http://127.0.0.1:3000'
 }
 
-exports.smtp = {
-	host: 'smtp.rgexpertise.com',
-	debug: true,
-	port: 465,
-	secure: true,
-	auth: {
-		user: 'support@rgexpertise.com',
-		pass: 'L21kkorZzSPj8XO'
-	},
-	tls: {
-		rejectUnauthorized:false
-	}
-}

@@ -13,6 +13,7 @@ var passport = require('passport');
 var routes = require('./routes/index');
 var api = require('./routes/api');
 var user = require('./routes/user');
+var parking = require('./routes/parking');
 /* Initialize express app */
 var app = express();
 
@@ -48,15 +49,14 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.use('/', routes);
 app.use('/api', api);
 app.use('/user', user);
-
+app.use('/parking', parking);
+app.use('/public',  express.static(path.join(__dirname, '/public')));
 /* Catch 404 and forward to error handler */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
-
 
 
 /* Development error handler */

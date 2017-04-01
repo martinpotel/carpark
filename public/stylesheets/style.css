@@ -4,3 +4,127 @@
 	margin-top: -5px;
 	z-index: 3;
 }
+
+.colorNormal {
+	color: rgba(0,0,0,0.87);
+}
+.homeNewSimulation a {
+	text-decoration: none !important;
+	color: rgba(0,0,0,0.87) !important;
+}
+
+.mainMenuList > md-list-item {
+	padding:0;
+}
+
+#toolBarVirtual {
+	display: block;
+	width: 100%;
+	background-color:rgb(96,125,139);
+}
+
+#toolBarVirtual.withTabs {
+	height:96px;
+}
+
+@media screen and (min-width: 960px) {
+	#toolBarVirtual {
+		height:64px;
+	}
+}
+
+@media screen and (max-width: 960px) {
+	#toolBarVirtual {
+		height:48px;
+	}
+}
+
+.mainMenuTextItem {
+	display: inline-block;
+	padding-top: 8px;
+}
+
+.container, body {
+	background-color: #F5F5F5;
+}
+
+.menuTitle {
+	text-align: center;
+}
+
+.mainMenuList > md-list-item a {
+	color:#666;
+	text-decoration: none;
+	font-size: 14px;
+	padding: 17px 17px 5px 17px;
+	display: block;
+	width: 100%;
+}
+
+.mainMenuList > md-list-item i {
+	float:left;
+	margin-top:-2px;
+}
+
+.mainMenuList > md-list-item:hover {
+	background-color: #F5F5F5;
+}
+
+main-menu-button i, .mainMenuButton {
+	padding-top: 13px;
+}
+
+@media screen and (min-width: 600px) {
+	md-toolbar > button > i, md-toolbar > a > i {
+		padding-top: 20px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	md-toolbar > button > i, md-toolbar > a > i {
+		padding-top: 11px;
+	}
+}
+
+.searchToolBar {
+	margin-top: 13px;
+}
+
+.mainSearchInput {
+	background:rgba(255,255,255,0.8);
+	border:1px solid #666;
+	border-radius: 5px;
+	border: none;
+	padding:6px;
+	padding-left:10px;
+	font-family: Roboto,'Helvetica Neue',sans-serif;
+	outline-width: 0;
+}
+
+.fadeIn {
+	transition:0.2s linear all;
+}
+
+.searchBarToolbar {
+	transition:0.1s linear all;
+	position: absolute;
+	width: 100%;
+	top:0;
+	z-index: 4;
+}
+
+.searchBarToolbar:not(.ng-hide) {
+	opacity:1;
+}
+
+.searchBarToolbar.ng-hide {
+	opacity:0;
+}
+
+.fadeIn.ng-enter {
+	opacity:0;
+}
+
+.fadeIn.ng-leave {
+	display:none;
+}

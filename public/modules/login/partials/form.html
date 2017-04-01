@@ -1,20 +1,12 @@
 <div layout="column" layout-fill>
-	<md-toolbar>
-		<div class="md-toolbar-tools">
-			<md-icon aria-label="Icon" class="material-icons">public</md-icon>
-			<span>CarparKing</span>
-			<span flex></span>
-			<md-button ng-href="#/register">
-				Register
-			</md-button>
-			<md-button ng-href="#/">
-				Home
-			</md-button>
-		</div>
-	</md-toolbar>
 	<div layout="row" layout-align="center center">
-		<md-content>
+		<md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
 			<div id="mainLoginFormContainer">
+			 <md-toolbar>
+				<div class="md-toolbar-tools">
+            		<h2><span>Login<span></h2>
+          		</div>
+          	</md-toolbar>
 				<form action="/user/Login" method="post" id="mainLoginForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column'>
 					<md-input-container flex='105' md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">email</md-icon>
@@ -29,6 +21,6 @@
 					</div>
 				</form>
 			<div>
-		</md-content>
+		</md-card>
 	</div>
 </div>
