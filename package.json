@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "angular-google-map": "0.0.2",
-    "angular-messages": "^1.6.3",
+    "angular-messages": "^1.6.4",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.0",
     "connect-flash": "^0.1.1",
