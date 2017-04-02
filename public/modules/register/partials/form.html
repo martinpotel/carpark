@@ -1,11 +1,12 @@
 <div layout="column" layout-fill>
-	<div layout="row" layout-align="center center">
-		<md-content>
-			<div id="mainLoginFormContainer">
-				<form id="mainRegisterForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column' ng-submit="submitForm(mainRegisterForm.$valid)">
+	<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center" >
+			<div id="mainLoginFormContainer" >
+				<form id="mainRegisterForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column' ng-submit="submitForm(mainRegisterForm.$valid)" style="padding: 50px">
 					
+
+
 					<md-input-container flex='105' >
-						<md-radio-group ng-model="newUser.gender" layout="row">
+						<md-radio-group ng-model="newUser.gender" layout="row" layout-align="center center">
 	      					<md-radio-button value="male" class="md-primary">Male</md-radio-button>
 	      					<md-radio-button value="female" class="md-primary">Female</md-radio-button>
 	    				</md-radio-group>
@@ -47,11 +48,10 @@
 					</div>
 
 
-				    <div class="footerMainLoginForm" ng-show="mainLoginForm.$valid && newUser.password===newUser.passwordConfirm">
-				    	<md-button type='submit' class=" md-raised md-hue-1">Submit</md-button>
+				    <div layout="row" layout-align="center center">
+				    	<md-button ng-disabled="!mainLoginForm.$valid && newUser.password===newUser.passwordConfirm" type='submit' class=" md-raised md-hue-1">Submit</md-button>
 					</div>
 				</form>
 			<div>
-		</md-content>
-	</div>
+	</md-content>
 </div>

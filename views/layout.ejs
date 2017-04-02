@@ -51,21 +51,24 @@
 					
 				</md-button>
 				<span flex></span>
-				<md-button ng-if="user!=='undefined'" ng-href="#/login">
-					Login
-				</md-button>
-				<md-button ng-if="user!=='undefined'" ng-href="#/register">
-					Register
-				</md-button>
-				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+				<% if(user) { %>
+				<md-button  ng-href="/user/Logout">
 					My Bookings
 				</md-button>
-				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+				<md-button ng-href="/user/Logout">
 					My Parkings
 				</md-button>
-				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+				<md-button ng-href="/user/Logout">
 					Logout
 				</md-button>
+				<% }else{ %>
+				<md-button ng-href="#/login">
+					Login 
+				</md-button>
+				<md-button ng-href="#/register">
+					Register
+				</md-button>
+				<% } %>
 				<md-button ng-href="#/rent">
 					<md-icon aria-label="Icon" class="material-icons">local_parking</md-icon>
 					Rent your parking

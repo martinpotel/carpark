@@ -15,14 +15,6 @@ rentModule.controller('RentController', function($scope, $http, $location) {
 		else $scope.user = data;
 	});
 
-	$scope.max = 2;
-	$scope.selectedIndex = 0;
-	$scope.nextTab = function() {
-		var index = ($scope.selectedIndex == $scope.max) ? 0 : $scope.selectedIndex + 1;
-		$scope.selectedIndex = index;
-
-	};
-
 	$scope.submit = function () {
 		console.log($scope.parking);
 		$http.post('/parking/save/', {parking:$scope.parking}).

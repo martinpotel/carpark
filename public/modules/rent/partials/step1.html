@@ -1,8 +1,13 @@
-<div layout="column" layout-fill>
-  	<md-tabs md-center-tabs="true" md-dynamic-height class="md-accent" md-border-bottom style="border: none;" md-selected="selectedIndex">
-  		<md-tab label="Location">
-			<div layout="column" layout-align="center center" style="margin-top: 20px;">
-			          	<input vs-google-autocomplete
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+  		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+
+				<md-card-content>
+				<md-icon aria-label="Icon" class="material-icons">place</md-icon>
+					<div  layout="row" layout-align="center center">
+					
+						<input vs-google-autocomplete
         					ng-model="parking.address.name"
         					vs-place="parking.address.place" 
         					vs-place-id="parking.address.components.placeId"
@@ -17,44 +22,73 @@
 	    					vs-longitude = "parking.address.components.location.long"
         					name="address"
         					type="text" style="margin-top:7px; width:50%;">
-		
-				<md-input-container style="margin-top:17px; width:40%;">
-					<label>Type</label>
-					<md-select ng-model="parking.type" required="required" style="width:100%;">
-						<md-option value="Driveway">Driveway</md-option>
-						<md-option value="Garage">Garage</md-option>
-						<md-option value="Carpark">Car Park</md-option>
-					</md-select>
-				</md-input-container>
-				<md-input-container style=" margin-top:7px; width:40%;">
-					<label>Width</label>
-					<md-select ng-model="parking.width" required="required" style="width:100%;">
-						<md-option value="Driveway">Normal</md-option>
-						<md-option value="Small">Small</md-option>
-					</md-select>
-				</md-input-container>
-				<md-button class="md-raised md-primary" ng-click="nextTab()">Next</md-button>
-			</div>
-		</md-tab>
-		
-		<md-tab label="Dates">
-			<div layout="column" layout-align="center center" style="margin-top: 20px;">
-
-				<h4 style="text-align: center"> Available </h4>
-				<div layout="row" layout-align="center center" style="margin-top: 20px;">
-					<label> From </label>
-					<md-datepicker ng-model="parking.dates.start" md-placeholder="Enter date"></md-datepicker>
-	    			<input aria-label="title" ng-model="parking.dates.start.hour" style="width:50px;">h
-	  				<input aria-label="title" ng-model="parking.dates.start.min" style="width:50px;">
-		  		</div>
-		  		<div layout="row" layout-align="center center" style="margin-top: 20px;">
-		  			<label> To   </label>
-					<md-datepicker ng-model="parking.dates.end" md-placeholder="Enter date"></md-datepicker>
-	    			<input aria-label="title" ng-model="parking.dates.end.hour" style="width:50px;">h	
-	  				<input aria-label="title" ng-model="parking.dates.end.min" style="width:50px;">
-		  		</div>
-		  		<md-button class="md-raised md-primary" ng-click="submit()">Next</md-button>
-		  	</div>
-		</md-tab>
-	</md-tabs>
+					</div>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+				<md-icon aria-label="Icon" class="material-icons">date_range</md-icon>
+					<div  layout="row" layout-align="center center">
+					<label>From</label>
+					<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
+					<label style="margin-left: 30px;">To</label>
+			  		<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
+			  		</div>
+			  	</md-card-content>
+			 </md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+				<md-icon aria-label="Icon" class="material-icons">settings</md-icon>
+					<div  layout="row" layout-align="center center">
+					<md-input-container style=" width:40%;">
+						<label>Type</label>
+						<md-select ng-model="parking.type" required="required" style="width:100%;">
+							<md-option value="Driveway">Driveway</md-option>
+							<md-option value="Garage">Garage</md-option>
+							<md-option value="Carpark">Car Park</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container style=" width:40%;">
+						<label>Width</label>
+						<md-select ng-model="parking.width" required="required" style="width:100%;">
+							<md-option value="Driveway">Normal</md-option>
+							<md-option value="Small">Small</md-option>
+						</md-select>
+					</md-input-container>
+					</div>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+				<md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon>
+					<div  layout="row" layout-align="center center">
+						<md-input-container class="md-block">
+	        				<label>Price per day</label>
+	        				<input required type="number" step="any" name="price" ng-model="parking.price" />
+	      				</md-input-container>
+			  		</div>
+			  	</md-card-content>
+			 </md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+				<md-icon aria-label="Icon" class="material-icons">create</md-icon>
+						<md-input-container class="md-block">
+          				<label>Other informations</label>
+          					<textarea ng-model="parking.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        				</md-input-container>
+			  	</md-card-content>
+			 </md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center">
+			<md-button class="md-raised md-primary" ng-click="submit()">Submit</md-button>
+		</div>
+	</md-content>	  		
 </div>
