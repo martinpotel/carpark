@@ -1,0 +1,35 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    
+  <md-dialog-content>
+    <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h3>{{owner.firstname}} {{owner.lastname}}</h3>
+            <h4>{{owner.phone}}</h4>
+            </div>
+          <md-button class="md-secondary">Send A Message</md-button>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h3>{{p.address.city}}</h3>
+            <h4>{{p.address.country}}</h4>
+            <h7>{{p.dates.start}}</h7>
+            <h7>{{p.dates.start}}</h7>
+        </md-list-item>
+    </md-list>
+
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Back
+      </md-button>
+      <md-button ng-click="answer('useful')">
+       Book
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,50 +1,65 @@
-<md-content>
 <div layout="column" layout-fill>
-	<div ng-if="user!=='undefined'" layout="row" layout-align="center center">
-		<h4> Welcome {{user.firstname}} {{user.lastname}}</h4>
-	</div>
-
-	<div layout="row" layout-align="center center">
-	
-	  	<input vs-google-autocomplete ng-model="adress" ng-change="printAdress()" name="address" type="text">
-	  	<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
-	  	<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
-	  	<md-button ng-href="#/notes">
-			search
-			<md-icon aria-label="Icon" class="material-icons">search</md-icon>
-		</md-button>
-	</div>
-
-	<div layout="row" layout-align="center center">
-		<h1>
-			<span ng-if="adress!==undefined">{{adress}}</span><br/>
-			<span ng-if="dateStart!==undefined">{{dateStart}}</span>
-			<span ng-if="dateEnd!==undefined">-> {{dateEnd}}</span> 
-		</h1>
-	</div>
-	
-	<div layout="row" layout-align="center center">
-		<md-content>
-	      <md-list flex>
-	        <md-subheader class="md-no-sticky">Parkings</md-subheader>
-	        <md-list-item class="md-3-line" ng-repeat="p in parkings" ng-click="selectPark(p)">
-				<div class="md-list-item-text" layout="column">
-					<h3>{{ p.address.city }}</h3>
-					<h4>{{ p.address.street }}</h4>
-					<p>{{ p.type}}</p>
-				</div>
-	        </md-list-item>
-	    	</md-list>
-	    </md-content>
-
-		<ng-map zoom="11" center="{{parkSelected.address.location.lat}},{{parkSelected.address.location.long}}" style="width: 50%; float:right">
-		    <marker 
-		    	no-watcher="true"
-	  			ng-repeat="p in parkings"
-	  			position="{{p.address.location.lat}}, {{p.address.location.long}}">	
-	  		</marker>
-		</ng-map>
-	</div>
+	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+					<div  layout="row" layout-align="center center">
+						<input vs-google-autocomplete
+							ng-model="adress.lib" 
+							vs-latitude="map.lat"
+	    					vs-longitude="map.long" 
+							ng-change="printAdress()" 
+							name="address" type="text" 
+							style="width: 80%">
+			  			<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
+			  			<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
+			  			<md-button ng-click="centerMap()" class="md-fab">
+							<md-icon aria-label="Icon" class="material-icons">search</md-icon>
+						</md-button>
+					</div>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="row">
+		    <div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+					<md-card-content>
+						<md-list>
+							<md-subheader class="md-no-sticky">Parkings</md-subheader>
+							<md-list-item class="md-3-line md-accent"  ng-repeat="p in parkings" ng-click="selectPark(p)" >
+								<div class="md-list-item-text" layout="column">
+									<h3>{{ p.address.city }}</h3>
+									<h4>{{p.address.streetNumber}}, {{ p.address.street }}</h4>
+									<p>{{ p.type}}</p>
+								</div>
+								<div>
+									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
+										<md-icon aria-label="Icon" class="material-icons">info</md-icon>	
+									</md-button>
+									<md-button ng-href="#/rent" class="md-icon-button">
+										<md-icon aria-label="Icon" class="material-icons">exit_to_app</md-icon>	
+									</md-button>
+								</div>
+							</md-list-item>
+						</md-list>
+					</md-card-content>
+				</md-card>
+			</div>
+			<div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+					<md-card-content>
+						<ng-map zoom="30" center="{{map.lat}},{{map.long}}">
+						    <marker 
+						    	no-watcher="true"
+					  			ng-repeat="p in parkings"
+					  			position="{{p.address.location.lat}}, {{p.address.location.long}}"
+					  			on-click="showAlert(p)">	
+					  		</marker>
+						</ng-map>
+					</md-card-content>
+				</md-card>
+			</div>
+		</div>
+	</md-content>
 </div>
-</md-content>
 

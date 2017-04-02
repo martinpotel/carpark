@@ -42,19 +42,26 @@
 
 	<body >
 		<md-toolbar layout="row" class="md-whiteframe-3dp">		
+		
+	
 			<div class="md-toolbar-tools">
-
 				<md-button ng-href="#/">
 					<md-icon aria-label="Icon" class="material-icons">public</md-icon>
 					<span>CarparKing</span>
 					
 				</md-button>
 				<span flex></span>
-				<md-button ng-if="user==='undefined'" ng-href="#/login">
+				<md-button ng-if="user!=='undefined'" ng-href="#/login">
 					Login
 				</md-button>
-				<md-button ng-if="user==='undefined'" ng-href="#/register">
+				<md-button ng-if="user!=='undefined'" ng-href="#/register">
 					Register
+				</md-button>
+				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+					My Bookings
+				</md-button>
+				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
+					My Parkings
 				</md-button>
 				<md-button ng-if="user!=='undefined'" ng-href="/user/Logout">
 					Logout
@@ -64,7 +71,8 @@
 					Rent your parking
 				</md-button>
 			</div> 
-		</md-toolbar>
+		
+			</md-toolbar>		
 		<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
 		<div ng-view class="container fadeIn" style="padding-bottom:40px;" flex></div>
 	</body>
