@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var path = require('path');
 var bcrypt   = require('bcrypt-nodejs');
+var ObjectId = require('mongodb').ObjectID;
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
 
@@ -76,5 +77,24 @@ router.get('/Logout', function(req, res){
     res.redirect('/');
 });
 
+
+router.post('/update-profile/', function(req,res){
+    console.log(req.body.user);
+
+    var db = req.app.locals.db;
+    var usersCollection = db.collection('users');
+    var userToSave = req.body.user;
+    userToSave._id = new ObjectId(req.body.user._id);
+    usersCollection.save(userToSave, function (err, doc) {
+        console.log(doc);
+        req.logIn(userToSave, function(error) {
+            if (!error) {
+                // successfully serialized user to session
+                res.send(req.user);
+            }
+        });
+        
+    });
+});
 
 module.exports = router;

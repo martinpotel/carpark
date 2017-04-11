@@ -9,7 +9,7 @@ rentModule.config(['$routeProvider', function($routeProvider) {
 	});
 }]);
 
-rentModule.controller('RentController', function($scope, $http, $location) {
+rentModule.controller('RentController', function($scope, $http, $location, $mdToast) {
 	$http.get('/user/logged-user/').success(function(data){
 		if (typeof data === 'undefined' || data === 'undefined') $location.path('/login');
 		else $scope.user = data;
@@ -20,6 +20,11 @@ rentModule.controller('RentController', function($scope, $http, $location) {
 		$http.post('/parking/save/', {parking:$scope.parking}).
 			success(function(data, status, headers, config) {
 			$location.path('/');
+			$mdToast.show($mdToast.simple()
+					.content("Advert created")
+					.position('top right')
+					.hideDelay(3000)
+			);
 		});
 	}
 

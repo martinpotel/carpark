@@ -27,10 +27,10 @@ router.get('/all/', function(req,res) {
 	});
 });
 
+
+//get the owner of the parking by the parking id
 router.get('/owner/:id', function(req,res) {
-
-	console.log(req.params.id);		
-
+	
 	var db = req.app.locals.db;
 	var users = db.collection('users');	
 	users.findOne({_id: new ObjectId(req.params.id)}, function(err, result) {
@@ -42,5 +42,26 @@ router.get('/owner/:id', function(req,res) {
 	
 });
 
+//get all the parkings of an user
+router.get('/user/:id', function(req, res) {
+	var db = req.app.locals.db;
+	var parkings = db.collection('parking');
+	parkings.find({user:req.params.id}).toArray(function(err, result) {	
+		if(result == null) res.send({'error': 'Not found'});
+		else {
+			res.send(result);
+		}
+	});
+});
+
+router.get('/delete/:id', function(req, res) {
+	var db = req.app.locals.db;
+	db.collection('parking').remove({_id: new ObjectId(req.params.id)}, function(err, result) {
+		if(result == null) res.send({'error': 'Not found'});
+		else {		
+			res.send(result);
+		}
+	});
+});
 
 module.exports = router;

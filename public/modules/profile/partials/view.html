@@ -1,0 +1,100 @@
+<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h1>Profile</h1>
+	</div>
+	<span flex=""></span>
+</md-toolbar>
+
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+  		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+					<h2 class="md-title" style="color:#333;">Informations</h2>
+					<div layout="row" layout-align="start center">
+						<div layout="column" layout-align="start start" style="margin-left: 5%">
+							<md-input-container flex='105' md-no-float>	
+								<p><b>Name </b> </p>
+							</md-input-container>
+							<md-input-container flex='105' md-no-float>		
+								<p><b>Mail </b> </p>
+							</md-input-container>
+							<md-input-container flex='105' md-no-float>	
+								<p><b>Phone </b></p>  
+							</md-input-container>
+						</div>
+						<div layout="column" layout-align="start start" style="margin-left: 5%" ng-if="!edit.informations">
+							<md-input-container flex='105' md-no-float>	
+								<p>{{user.firstname}} {{user.lastname}}</p>
+							</md-input-container>
+							<md-input-container flex='105' md-no-float>	
+								<p>{{user.mail}}</p>
+							</md-input-container>
+							<md-input-container flex='105' md-no-float>	
+								<p>{{user.phone}}</p>
+							</md-input-container>
+						</div>
+						<div layout="column" layout-align="start start" style="margin-left: 5%" ng-if="edit.informations">
+							<div layout="row" layout-align="start start">
+								<md-input-container flex='105' md-no-float>	
+									<input type="text" class="validate" placeholder="{{user.firstname}}" required="required" ng-model="user.firstname">
+								</md-input-container>
+								<md-input-container flex='105' md-no-float>	
+									<input type="text" class="validate" placeholder="{{user.lastname}}" required="required" ng-model="user.lastname">
+								</md-input-container>
+							</div>
+							<md-input-container flex='105' md-no-float>	
+								<input type="text" class="validate" placeholder="{{user.mail}}" required="required" ng-model="user.mail">
+							</md-input-container>
+							<md-input-container flex='105' md-no-float>	
+								<input type="text" class="validate" placeholder="{{user.phone}}" required="required" ng-model="user.phone">
+							</md-input-container>
+						</div>
+					</div>
+					<div layout="column" layout-align="start start" style="margin-left: 60%">
+						<md-switch class="md-primary" name="special" ng-model="edit.informations" >
+         					Edit
+        				</md-switch>
+	        		</div>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+					<h2 class="md-title" style="color:#333;">Description</h2>
+					<md-input-container class="md-block">
+          					<textarea ng-model="user.description" md-maxlength="150" rows="5" ></textarea>
+        			</md-input-container>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+					<h2 class="md-title" style="color:#333;">Edit Password</h2>
+					<div layout="row" layout-align="center center" ng-if="edit.password">
+						<md-input-container flex='105' md-no-float>
+							<input name="password" class="validate" type="password" placeholder="New Password" ng-model="pass.password"/>
+						</md-input-container>
+
+						<md-input-container flex='105' md-no-float>
+							<input name="passwordConfirm" placeholder="Confirm Password" type="password" class="validate" ng-model="pass.passwordConfirm" />
+						</md-input-container>
+					</div>
+					<div layout="column" layout-align="start start" style="margin-left: 60%">
+						<md-switch class="md-primary" name="special" ng-model="edit.password" >
+         					Edit
+        				</md-switch>
+	        		</div>
+			  	</md-card-content>
+			 </md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center">
+			<md-button class="md-raised md-primary" ng-click="saveUser()" >OK</md-button>
+		</div>
+	</md-content>	  		
+</div>

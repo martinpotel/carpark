@@ -1,3 +1,10 @@
+<md-toolbar layout="row" class="md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<main-menu-button></main-menu-button>
+		<h1>Home</h1>
+	</div>
+</md-toolbar>
+
 <div layout="column" layout-fill>
 	<md-content class="md-padding" layout-xs="column" layout="column">
 		<div flex-xs flex-gt-xs="50" layout="column">
@@ -48,7 +55,7 @@
 			<div flex-xs flex-gt-xs="50" layout="column">
 				<md-card>
 					<md-card-content>
-						<ng-map zoom="30" center="{{map.lat}},{{map.long}}">
+						<ng-map zoom="15" center="{{map.lat}},{{map.long}}">
 						    <marker 
 						    	no-watcher="true"
 					  			ng-repeat="p in parkings"

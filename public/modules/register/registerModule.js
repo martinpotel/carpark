@@ -38,6 +38,11 @@ registerModule.controller('RegisterController', ['$scope' ,'$location','$http', 
 		$http.post('/user/create-user/', {newUser:$scope.newUser}).
 			success(function(data, status, headers, config) {
 			$location.path('/');
+			$mdToast.show($mdToast.simple()
+					.content("Account created")
+					.position('top right')
+					.hideDelay(3000)
+			);
 		});
 	}
 }]);

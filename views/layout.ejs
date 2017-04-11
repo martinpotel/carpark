@@ -37,10 +37,15 @@
 		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
 		<script type="text/javascript" src="/modules/register/registerModule.js"></script>
 		<script type="text/javascript" src="/modules/rent/rentModule.js"></script>
+		<script type="text/javascript" src="/modules/profile/profileModule.js"></script>
+		<script type="text/javascript" src="/modules/parking/parkingModule.js"></script>
 		<script type="text/javascript" src="/app.js"></script>
 	</head>
 
 	<body >
+
+	<!--
+
 		<md-toolbar layout="row" class="md-whiteframe-3dp">		
 		
 	
@@ -78,6 +83,53 @@
 			</md-toolbar>		
 		<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
 		<div ng-view class="container fadeIn" style="padding-bottom:40px;" flex></div>
+		-->
+	<div id="toolBarVirtual"></div>
+	<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
+	<section layout="row" flex>
+		<div id="fixedSidenavReplacer" hide-md hide-sm hide-xs></div>
+		<md-sidenav md-component-id="left" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" id="sideNavCustomerApp">
+			<h4 class="md-title menuTitle hide-gt-md" style="margin:10px;">
+				<md-icon aria-label="Icon" class="material-icons">public</md-icon> Carparking
+			</h4>
+			<md-list class="mainMenuList">
+				<% if(user) { %>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">local_parking</i> <span class="mainMenuTextItem">
+					Rent your parking</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/profile" class="md-list-item-text"><i class="material-icons md-avatar-icon">person</i> <span class="mainMenuTextItem">
+					Profile</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/" class="md-list-item-text"><i class="material-icons md-avatar-icon">home</i> <span class="mainMenuTextItem">My Bookings</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/parkings" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">My Parkings</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="/user/Logout" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Logout</span></a>
+				</md-list-item>
+				<% }else{ %>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/login" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Login </span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/register" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Register</span></a>
+				</md-list-item>
+				<% } if(admin) { %>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/" class="md-list-item-text"><i class="material-icons md-avatar-icon">https</i> <span class="mainMenuTextItem">
+					Admin</span></a>
+				</md-list-item>
+				<%}%>
+
+
+			</md-list>
+		</md-sidenav>
+		<div ng-view class="container fadeIn" style="padding-bottom:40px;" flex></div>
+	</section>
 	</body>
 </html>
 
