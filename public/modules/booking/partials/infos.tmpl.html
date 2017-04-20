@@ -1,0 +1,60 @@
+<md-dialog aria-label=""  ng-cloak>
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Booking Informations</h2>
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="min-width:800px;">
+			<md-list>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">person</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{ctrl.parent.currBooking.owner.firstname}} {{ctrl.parent.currBooking.owner.lastname}}</h3>
+						<h4>{{ctrl.parent.currBooking.owner.phone}}</h4>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">date_range</md-icon>
+					<div class="md-list-item-text">
+						<h3>From <b>{{ctrl.parent.currBooking.dates.start | date:'d/M/yy' }}</b> to <b>{{ ctrl.parent.currBooking.dates.start | date:'d/M/yy'}}</b></h3>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">location_on</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{ctrl.parent.currBooking.parking.address.city}}</h3>
+						<h4>{{ctrl.parent.currBooking.parking.address.country}}</h4>
+						<h7>{{ctrl.parent.currBooking.parking.dates.start}}</h7>
+						<h7>{{ctrl.parent.currBooking.parking.dates.start}}</h7>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">info</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{ctrl.parent.currBooking.parking.type}}</h3>
+						<h3>{{ctrl.parent.currBooking.parking.width}}</h3>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{ctrl.parent.currBooking.parking.price}} €</h3>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">description</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{ctrl.parent.currBooking.parking.description}}</h3>
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-dialog-content>
+	</form>
+</md-dialog>

@@ -16,10 +16,16 @@ router.post('/save/', function (req, res) {
     });
 });
 
+
+
 router.get('/all/', function(req,res) {
+
+	if (typeof req.user === 'undefined') var user=null;
+    else user = req.user._id;
+
 	var db = req.app.locals.db;
 	var parkings = db.collection('parking');	
-	parkings.find({}).toArray(function(err, result) {
+	parkings.find({user: {'$ne':user }}).toArray(function(err, result) {
 		if(result == null) res.send({'error': 'Not found'});
 		else {
 			res.send(result);

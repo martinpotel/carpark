@@ -9,17 +9,29 @@ bookingModule.config(['$routeProvider', function($routeProvider) {
 	});
 }]);
 
-bookingModule.controller('BookingController', function($scope, $http, $location, $mdToast) {
+bookingModule.controller('BookingController', function($scope, $http, $location, $mdToast, $mdDialog) {
 		
 	$http.get('/user/logged-user/').success(function(data){
 		if (typeof data === 'undefined' || data === 'undefined') $location.path('/login');
 		else {
 			$scope.user = data;
 			$http.get('/booking/user/'+ $scope.user._id).success(function(bookings){
-				console.log(bookings);
   				$scope.bookings = bookings;
 			});	
 		}
 	});
+
+	$scope.getInformations = function ($event,b) {
+		$scope.currBooking = b;
+
+		console.log($scope.currBooking);
+
+		$mdDialog.show({
+			controller: function () { this.parent = $scope; },
+			controllerAs: 'ctrl',
+			templateUrl: '/public/modules/booking/partials/infos.tmpl.html',
+			clickOutsideToClose:true
+	    });
+	}
 
 });

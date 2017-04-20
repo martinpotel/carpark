@@ -68,6 +68,9 @@ homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', '$locati
 	   	$location.path('/bookings');
 	}
 
+	$scope.goToReservations = function () {
+	   	$location.path('/reservations');
+	}
 
 	function DialogController($scope, $mdDialog,$location,  p) {
 	  	$scope.p = p;

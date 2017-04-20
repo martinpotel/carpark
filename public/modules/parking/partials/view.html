@@ -22,13 +22,8 @@
 									<p>{{ p.type}}</p>
 								</div>
 								<div>
-									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
-										<md-icon aria-label="Icon" class="material-icons">info</md-icon>	
-									</md-button>
-									<md-button ng-href="#/rent" class="md-icon-button">
-										<md-icon aria-label="Icon" class="material-icons">exit_to_app</md-icon>	
-									</md-button>
 									<md-button ng-href="" class="md-icon-button" ng-click="deletePark($event,p)">
+										<md-tooltip md-direction="top">Delete parking</md-tooltip>
 										<md-icon aria-label="Icon" class="material-icons">delete</md-icon>	
 									</md-button>
 								</div>
