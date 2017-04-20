@@ -1,35 +1,59 @@
-<md-dialog aria-label="Mango (Fruit)">
-  <form ng-cloak>
-    
-  <md-dialog-content>
-    <md-list>
-        <md-list-item class="md-3-line">
-          <div class="md-list-item-text">
-            <h3>{{owner.firstname}} {{owner.lastname}}</h3>
-            <h4>{{owner.phone}}</h4>
-            </div>
-          <md-button class="md-secondary">Send A Message</md-button>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item class="md-3-line">
-          <div class="md-list-item-text">
-            <h3>{{p.address.city}}</h3>
-            <h4>{{p.address.country}}</h4>
-            <h7>{{p.dates.start}}</h7>
-            <h7>{{p.dates.start}}</h7>
-        </md-list-item>
-    </md-list>
+<md-dialog ng-cloak style="width:70%;" >
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Book a Parking</h2>
+				<span flex></span>
+				<md-button type='button' class="md-icon-button" ng-click="hide()">
+				<i class="material-icons" >clear</i>
+				</md-button>
+			</div>
+		</md-toolbar>
 
-    </md-dialog-content>
+		<md-dialog-content>
+			<md-list>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">person</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{owner.firstname}} {{owner.lastname}}</h3>
+						<h4>{{owner.phone}}</h4>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">location_on</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{p.address.city}}</h3>
+						<h4>{{p.address.country}}</h4>
+						<h7>{{p.dates.start}}</h7>
+						<h7>{{p.dates.start}}</h7>
+					</div>
+				</md-list-item>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">info</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{p.type}}</h3>
+						<h3>{{p.width}}</h3>
+					</div>
+				</md-list-item>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{p.price}} €</h3>
+					</div>
+				</md-list-item>
+				<md-list-item class="md-3-line">
+					<md-icon aria-label="Icon" class="material-icons">description</md-icon>
+					<div class="md-list-item-text">
+						<h3>{{p.description}}</h3>
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-dialog-content>
 
-    <md-dialog-actions layout="row">
-      <span flex></span>
-      <md-button ng-click="answer('not useful')">
-       Back
-      </md-button>
-      <md-button ng-click="answer('useful')">
-       Book
-      </md-button>
-    </md-dialog-actions>
-  </form>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="openMessageBox($event,owner)">Send A Message</md-button>
+			<md-button ng-click="bookParking($event,p,owner)"> Book </md-button>
+		</md-dialog-actions>
+	</form>
 </md-dialog>

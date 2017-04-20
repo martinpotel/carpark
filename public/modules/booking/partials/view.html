@@ -3,7 +3,7 @@
 		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h1>My Parkings</h1>
+		<h1>My Bookings</h1>
 	</div>
 	<span flex=""></span>
 </md-toolbar>
@@ -13,13 +13,11 @@
   		<div flex-xs flex-gt-xs="50" layout="column">
 			<md-card>
 				<md-card-content>
-					<h2 class="md-title" style="color:#333;">My Parkings</h2>
+					<h2 class="md-title" style="color:#333;">My Bookings</h2>
 					<md-list>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="p in parkings" >
+							<md-list-item class="md-3-line md-accent"  ng-repeat="b in bookings" >
 								<div class="md-list-item-text" layout="column">
-									<h3>{{ p.address.city }}</h3>
-									<h4>{{p.address.streetNumber}}, {{ p.address.street }}</h4>
-									<p>{{ p.type}}</p>
+									<h4>From <b>{{b.dates.start}}</b> to <b>{{ b.dates.start}}</b></h4>
 								</div>
 								<div>
 									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">

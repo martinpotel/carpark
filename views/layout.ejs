@@ -32,6 +32,8 @@
 		<script type="text/javascript" src="/components/ngmap/build/scripts/ng-map.min.js"></script>
 
 		<!-- require app modules -->
+		<script type="text/javascript" src="/modules/admin/adminModule.js"></script>
+
 		<script type="text/javascript" src="/modules/home/homeModule.js"></script>
 		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
 		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
@@ -39,51 +41,13 @@
 		<script type="text/javascript" src="/modules/rent/rentModule.js"></script>
 		<script type="text/javascript" src="/modules/profile/profileModule.js"></script>
 		<script type="text/javascript" src="/modules/parking/parkingModule.js"></script>
+		<script type="text/javascript" src="/modules/message/messageModule.js"></script>
+		<script type="text/javascript" src="/modules/booking/bookingModule.js"></script>
 		<script type="text/javascript" src="/app.js"></script>
 	</head>
 
 	<body >
 
-	<!--
-
-		<md-toolbar layout="row" class="md-whiteframe-3dp">		
-		
-	
-			<div class="md-toolbar-tools">
-				<md-button ng-href="#/">
-					<md-icon aria-label="Icon" class="material-icons">public</md-icon>
-					<span>CarparKing</span>
-					
-				</md-button>
-				<span flex></span>
-				<% if(user) { %>
-				<md-button  ng-href="/user/Logout">
-					My Bookings
-				</md-button>
-				<md-button ng-href="/user/Logout">
-					My Parkings
-				</md-button>
-				<md-button ng-href="/user/Logout">
-					Logout
-				</md-button>
-				<% }else{ %>
-				<md-button ng-href="#/login">
-					Login 
-				</md-button>
-				<md-button ng-href="#/register">
-					Register
-				</md-button>
-				<% } %>
-				<md-button ng-href="#/rent">
-					<md-icon aria-label="Icon" class="material-icons">local_parking</md-icon>
-					Rent your parking
-				</md-button>
-			</div> 
-		
-			</md-toolbar>		
-		<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
-		<div ng-view class="container fadeIn" style="padding-bottom:40px;" flex></div>
-		-->
 	<div id="toolBarVirtual"></div>
 	<md-progress-linear md-mode="indeterminate" id="mainProgressBar"></md-progress-linear>
 	<section layout="row" flex>
@@ -95,18 +59,21 @@
 			<md-list class="mainMenuList">
 				<% if(user) { %>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">local_parking</i> <span class="mainMenuTextItem">
+					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">
 					Rent your parking</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/messages" class="md-list-item-text"><i class="material-icons md-avatar-icon">mail</i> <span class="mainMenuTextItem">Messages</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/profile" class="md-list-item-text"><i class="material-icons md-avatar-icon">person</i> <span class="mainMenuTextItem">
 					Profile</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/" class="md-list-item-text"><i class="material-icons md-avatar-icon">home</i> <span class="mainMenuTextItem">My Bookings</span></a>
+					<a href="#/bookings" class="md-list-item-text"><i class="material-icons md-avatar-icon">library_books</i> <span class="mainMenuTextItem">My Bookings</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/parkings" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">My Parkings</span></a>
+					<a href="#/parkings" class="md-list-item-text"><i class="material-icons md-avatar-icon">local_parking</i> <span class="mainMenuTextItem">My Parkings</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="/user/Logout" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Logout</span></a>
@@ -120,7 +87,7 @@
 				</md-list-item>
 				<% } if(admin) { %>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/" class="md-list-item-text"><i class="material-icons md-avatar-icon">https</i> <span class="mainMenuTextItem">
+					<a href="#/admin" class="md-list-item-text"><i class="material-icons md-avatar-icon">https</i> <span class="mainMenuTextItem">
 					Admin</span></a>
 				</md-list-item>
 				<%}%>

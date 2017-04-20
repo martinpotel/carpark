@@ -50,9 +50,39 @@ passport.use(new LocalStrategy({passReqToCallback: true},
     }
 ));
 
+router.get('/all', function(req, res) {
+    var db = req.app.locals.db;
+    var users = db.collection('users'); 
+    users.find({}).toArray(function(err, result) {
+        if(result == null) res.send({'error': 'Not found'});
+        else {
+            res.send(result);
+        }
+    });
+});
+
 router.get('/logged-user/', function (req, res) {
     if (typeof req.user === 'undefined') res.send('undefined');
     else res.send(req.user);
+});
+
+router.get('/admin-user/', function (req, res) {
+    if (typeof req.user === 'undefined') res.send('undefined');
+    else {
+        res.send(req.user.admin);
+    }
+});
+
+
+router.get('/logs/:id', function(req, res) {
+    var db = req.app.locals.db;
+    var userLogs = db.collection('userlogs');
+    userLogs.find({user_id: req.params.id}).toArray(function(err, logs) {
+        if(logs == null) res.send({'error': 'Not found'});
+        else {
+            res.send(logs);
+        }
+    });
 });
 
 

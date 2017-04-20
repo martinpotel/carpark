@@ -1,0 +1,41 @@
+<md-dialog ng-cloak style="width:70%;" >
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Reply</h2>
+				<span flex></span>
+				<md-button type='button' class="md-icon-button" ng-click="closeMessageBox()">
+					<i class="material-icons" >clear</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="max-height:810px;">
+			<div class="md-dialog-content">
+				<md-content class="md-padding">
+					<div layout="row" layout-align="center center">
+						<md-input-container flex="80" class="md-icon-float">
+							<label>To</label>
+							<input>{{message.fromString}}</input>
+						</md-input-container>
+					</div>
+					<div layout="row" layout-align="center center">
+						<md-input-container flex="80" class="md-icon-float">
+							<label>Message</label>
+							<input>{{message.content}}</input>
+						</md-input-container>
+					</div>
+
+					<div layout="row" layout-align="center center">
+						<md-input-container class="md-icon-float" flex="80">
+							<label>Answer</label>
+							<textarea ng-model="reply.content" name="textcontent" columns="1" rows="7" required></textarea>
+						</md-input-container>
+					</div>
+					<div style="text-align:center">
+						<md-button type='button' class="md-accent md-raised md-hue-1" ng-click="sendMessage()">Send</md-button>
+					</div>
+				</md-content>
+			</div>
+		</md-dialog-content>
+	</form>
+</md-dialog>

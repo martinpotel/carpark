@@ -1,0 +1,47 @@
+<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h1>Messages</h1>
+	</div>
+	<span flex=""></span>
+</md-toolbar>
+
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+  		<div flex-xs flex-gt-xs="50" layout="column">
+			<md-card>
+				<md-card-content>
+					<h2 class="md-title" style="color:#333;">Messages</h2>
+					<md-list>
+							<md-list-item class="md-3-line md-accent"  ng-repeat="m in messages">
+								<div>
+									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
+										<md-icon ng-if="m.read" aria-label="Icon" class="material-icons">check_circle</md-icon>	
+										<md-icon ng-if="!m.read" aria-label="Icon" class="material-icons">remove_circle</md-icon>
+									</md-button>	
+								</div>
+								<div class="md-list-item-text" layout="column">
+									<h3><md-icon aria-label="Icon" class="material-icons">person</md-icon> {{ m.fromString }}</h3>
+									<h4><md-icon aria-label="Icon" class="material-icons">subject</md-icon> Parking {{m.parking}}</h4>
+									<p>{{ m.content}}</p>
+								</div>
+								<div>
+									<md-button ng-href="" class="md-icon-button" ng-click="read($event, m)">
+										<md-icon aria-label="Icon" class="material-icons">done</md-icon>	
+									</md-button>
+									<md-button ng-href="" class="md-icon-button" ng-click="reply($event, m)">
+										<md-icon aria-label="Icon" class="material-icons">reply</md-icon>	
+									</md-button>
+									<md-button ng-href="" class="md-icon-button" ng-click="deleteMessage($event,m)">
+										<md-icon aria-label="Icon" class="material-icons">delete</md-icon>	
+									</md-button>
+								</div>
+							</md-list-item>
+					</md-list>
+				</md-card-content>
+			</md-card>
+		</div>
+	</md-content>	  		
+</div>

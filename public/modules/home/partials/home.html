@@ -1,15 +1,43 @@
 <md-toolbar layout="row" class="md-whiteframe-3dp">
 	<div class="md-toolbar-tools">
 		<main-menu-button></main-menu-button>
-		<h1>Home</h1>
+		<h1>CarParking</h1>
 	</div>
 </md-toolbar>
 
 <div layout="column" layout-fill>
 	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countReservation>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countReservation}} reservation(s) to accept.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToMessages()">Reservations</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countMsg>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countMsg}} message(s) to read.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToMessages()">Messages</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countBooking>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countBooking}} booking(s) waiting.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToBookings()">Bookings</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
 		<div flex-xs flex-gt-xs="50" layout="column">
 			<md-card>
 				<md-card-content>
+					<h2 class="md-title" style="color:#333;">Find a Parking</h2>
 					<div  layout="row" layout-align="center center">
 						<input vs-google-autocomplete
 							ng-model="adress.lib" 
@@ -41,10 +69,7 @@
 								</div>
 								<div>
 									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
-										<md-icon aria-label="Icon" class="material-icons">info</md-icon>	
-									</md-button>
-									<md-button ng-href="#/rent" class="md-icon-button">
-										<md-icon aria-label="Icon" class="material-icons">exit_to_app</md-icon>	
+										<md-icon aria-label="Icon" class="material-icons">launch</md-icon>	
 									</md-button>
 								</div>
 							</md-list-item>

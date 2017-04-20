@@ -16,7 +16,7 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 /*
 	Displays home page and username
 */
-homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', function($scope, $http,$mdDialog) {
+homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', '$location', function($scope, $http,$mdDialog, $location) {
 
 
 	$scope.map = {};
@@ -29,6 +29,15 @@ homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', function
 			$scope.parkSelected = $scope.parkings[0];
 			$scope.map.lat = $scope.parkSelected.address.location.lat;
 			$scope.map.long = $scope.parkSelected.address.location.long;
+			$http.get('/message/not-read/').success(function(message){
+				$scope.countMsg = message.count;
+				$http.get('/booking/not-confirmed/').success(function(booking){
+					$scope.countBooking = booking.count;
+				});
+					$http.get('/booking/to-confirm/').success(function(resevation){
+						$scope.countReservation = resevation.count;
+					});
+			});	
 		});	
 	});	
 
@@ -51,28 +60,138 @@ homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', function
 		});
 	};
 
+	$scope.goToMessages = function () {
+	   	$location.path('/messages');
+	}
 
-  function DialogController($scope, $mdDialog, p) {
-
-  	$scope.p = p;
-  	$http.get('/parking/owner/'+ $scope.p.user).success(function(owner){
-  		$scope.owner = owner;
-  		$scope.p = p;
-	});	
+	$scope.goToBookings = function () {
+	   	$location.path('/bookings');
+	}
 
 
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
+	function DialogController($scope, $mdDialog,$location,  p) {
+	  	$scope.p = p;
+	  	$http.get('/parking/owner/'+ $scope.p.user).success(function(owner){
+	  		$scope.owner = owner;
+	  		$scope.p = p;
+		});	
 
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
-  }
+	    $scope.hide   = function()       { $mdDialog.hide();       };
+	    $scope.cancel = function()       { $mdDialog.cancel();     };
+	    $scope.answer = function(answer) { $mdDialog.hide(answer); };
+
+	    $scope.openMessageBox = function(ev, owner) {
+			$http.get('/user/logged-user/').success(function(data){
+				if (typeof data === 'undefined' || data === 'undefined') {
+					$location.path('/login');
+					$mdDialog.hide();
+				}
+				else 
+					$mdDialog.show({
+						controller: MessageController,
+						templateUrl: 'public/modules/home/partials/message.tmpl.html',
+						parent: angular.element(document.body),
+						targetEvent: ev,
+						clickOutsideToClose:true,
+						fullscreen: $scope.customFullscreen,
+						owner:owner,
+						p:$scope.p
+					}); 
+			});	
+	    };
+
+	    $scope.bookParking = function (ev, p, owner) {
+	    	$http.get('/user/logged-user/').success(function(data){
+				if (typeof data === 'undefined' || data === 'undefined') {
+					$location.path('/login');
+					$mdDialog.hide();
+				}
+				else 
+			    	$mdDialog.show({
+						controller: BookingController,
+						templateUrl: 'public/modules/home/partials/booking.tmpl.html',
+						parent: angular.element(document.body),
+						targetEvent: ev,
+						clickOutsideToClose:true,
+						fullscreen: $scope.customFullscreen,
+						owner:owner,
+						p:p,
+						owner:owner
+				});
+			}); 
+	    }
+
+	}
+
+	function MessageController($scope, $mdDialog, $mdToast, owner, p) {
+		$scope.owner = owner;
+		$scope.p = p;
+
+		$scope.message = {to:$scope.owner._id, parking:p._id};
+
+		$scope.sendMessage = function () {
+			$http.post('/message/send/', {message:$scope.message}).
+			success(function(data, status, headers, config) {
+				$mdDialog.hide();
+				$mdToast.show($mdToast.simple()
+					.content("Message sent")
+					.position('top right')
+					.hideDelay(3000)
+				);
+			});
+		}
+
+		$scope.closeMessageBox = function() { 
+			$mdDialog.hide(); 
+			$mdDialog.show({
+				controller: DialogController,
+				templateUrl: 'public/modules/home/partials/dialog1.tmpl.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose:true,
+				fullscreen: $scope.customFullscreen,
+				p:p,
+			});
+
+		};
+	}
+
+	function BookingController($scope, $mdDialog, $mdToast, $location,  p, owner) {
+
+		$scope.p = p;
+		$scope.owner = owner;
+		$scope.booking = {};
+		$scope.booking.owner = owner._id;
+		$scope.booking.parking = p._id;
+		$scope.booking.dates = {};
+
+		$scope.closeBookingBox = function() { 
+			$mdDialog.hide(); 
+			$mdDialog.show({
+				controller: DialogController,
+				templateUrl: 'public/modules/home/partials/dialog1.tmpl.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose:true,
+				fullscreen: $scope.customFullscreen,
+				p:p,
+			});
+		};
+
+		$scope.bookParking = function () {
+			console.log($scope.booking);
+
+			$http.post('/booking/create/', {booking:$scope.booking}).
+				success(function(data, status, headers, config) {
+					$mdDialog.hide();
+					$location.path('/bookings');
+					$mdToast.show($mdToast.simple()
+						.content("Park booked")
+						.position('top right')
+						.hideDelay(3000)
+					);
+			});
+		}
+	}
 
 
 

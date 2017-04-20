@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 // home
-router.get('/users', function(req, res) {
+router.get('/all', function(req, res) {
 	var db = req.app.locals.db;
 	var users = db.collection('users');	
 	users.find({}).toArray(function(err, result) {
