@@ -10,24 +10,24 @@
 				
 			</div>
 		</md-toolbar>
-		<md-dialog-content style="max-height:810px;">
+		<md-dialog-content style="max-height:60%;">
 			<div class="md-dialog-content">
 				<md-content class="md-padding">
 					<div layout="row" layout-align="center center">
 						<md-input-container flex="80" class="md-icon-float">
 							<label>To</label>
-							<input>{{owner.firstname}} {{owner.lastname}}</input>
+							<p style="margin-top: 23px;">{{owner.firstname}} {{owner.lastname}}</p>
 						</md-input-container>
 					</div>
 					<div layout="row" layout-align="center center">
 						<md-input-container flex="80">
 							<label>Object</label>
-							<input>Parking: {{p._id}}</input>
+							<p style="margin-top: 23px;">Parking: {{p._id}}</p>
 						</md-input-container>
 					</div>
 					<div layout="row" layout-align="center center">
 						<md-input-container class="md-block" flex="80">
-							<label>Content</label>
+							<label>Message</label>
 							<textarea ng-model="message.content" name="textcontent" columns="1" rows="7" required></textarea>
 						</md-input-container>
 					</div>

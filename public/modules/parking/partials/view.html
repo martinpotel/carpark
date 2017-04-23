@@ -15,7 +15,7 @@
 				<md-card-content>
 					<h2 class="md-title" style="color:#333;">My Parkings</h2>
 					<md-list>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="p in parkings" >
+							<md-list-item class="md-3-line md-accent"  ng-repeat="p in parkings" ng-click="null" >
 								<div class="md-list-item-text" layout="column">
 									<h3>{{ p.address.city }}</h3>
 									<h4>{{p.address.streetNumber}}, {{ p.address.street }}</h4>

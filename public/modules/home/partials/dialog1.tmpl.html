@@ -10,47 +10,46 @@
 			</div>
 		</md-toolbar>
 
-		<md-dialog-content>
-			<md-list>
-				<md-list-item class="md-3-line">
-					<md-icon aria-label="Icon" class="material-icons">person</md-icon>
-					<div class="md-list-item-text">
+		<md-dialog-content style="max-height:60%;">
+			<md-list flex>
+				<md-subheader class="md-no-sticky">
+					<md-icon aria-label="Icon" class="material-icons">person</md-icon> Owner Informations</md-subheader>
+				<md-list-item class="md-3-line" ng-click="null">
+					<div class="md-list-item-text" layout="column" layout-align="center center">
 						<h3>{{owner.firstname}} {{owner.lastname}}</h3>
 						<h4>{{owner.phone}}</h4>
 					</div>
 				</md-list-item>
-				<md-divider></md-divider>
-				<md-list-item class="md-3-line">
-					<md-icon aria-label="Icon" class="material-icons">location_on</md-icon>
-					<div class="md-list-item-text">
+				<md-divider ></md-divider>
+				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">location_on</md-icon> Location</md-subheader>
+				<md-list-item class="md-3-line" ng-click="null">
+					<div class="md-list-item-text" layout="column" layout-align="center center">
 						<h3>{{p.address.city}}</h3>
 						<h4>{{p.address.country}}</h4>
-						<h7>{{p.dates.start}}</h7>
-						<h7>{{p.dates.start}}</h7>
 					</div>
 				</md-list-item>
-				<md-divider></md-divider>
-				<md-list-item class="md-3-line">
-					<md-icon aria-label="Icon" class="material-icons">info</md-icon>
-					<div class="md-list-item-text">
+				<md-divider ></md-divider>
+				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">info</md-icon> Parking Informations</md-subheader>
+				<md-list-item class="md-3-line" ng-click="null">	
+					<div class="md-list-item-text" layout="column" layout-align="center center">
 						<h3>{{p.type}}</h3>
 						<h3>{{p.width}}</h3>
 					</div>
 				</md-list-item>
-				<md-divider></md-divider>
-				<md-list-item class="md-3-line">
-					<md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon>
-					<div class="md-list-item-text">
+				<md-divider ></md-divider>
+				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon> Price</md-subheader>
+				<md-list-item class="md-3-line" ng-click="null"> 
+					<div class="md-list-item-text" layout="column" layout-align="center center">
 						<h3>{{p.price}} €</h3>
 					</div>
 				</md-list-item>
-				<md-divider></md-divider>
-				<md-list-item class="md-3-line">
-					<md-icon aria-label="Icon" class="material-icons">description</md-icon>
-					<div class="md-list-item-text">
+				<md-divider ></md-divider>
+				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">description</md-icon> Owner Informations</md-subheader>
+				<md-list-item class="md-3-line" ng-click="null">
+					<div class="md-list-item-text" layout="column" layout-align="center center">
 						<h3>{{p.description}}</h3>
 					</div>
-				</md-list-item>
+				</md-list-item>	
 			</md-list>
 		</md-dialog-content>
 

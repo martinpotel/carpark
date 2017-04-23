@@ -15,7 +15,7 @@
 				<md-card-content>
 					<h2 class="md-title" style="color:#333;">List of the reservations</h2>
 					<md-list ng-cloak>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="b in bookings" layout="row">
+							<md-list-item class="md-3-line md-accent"  ng-repeat="b in bookings" layout="row" ng-click="null">
 								<div class="md-list-item-text" layout="column">
 									<h3>{{b.parking.address.street}}, {{b.parking.address.city}}</h3>
 									<h4>From <b>{{b.dates.start | date:'d/M/yy' }}</b> to <b>{{ b.dates.start | date:'d/M/yy'}}</b></h4>
