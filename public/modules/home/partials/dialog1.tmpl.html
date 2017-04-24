@@ -1,4 +1,4 @@
-<md-dialog ng-cloak style="width:70%;" >
+<md-dialog ng-cloak style="width:40%;" >
 	<form>
 		<md-toolbar>
 			<div class="md-toolbar-tools">
@@ -10,12 +10,12 @@
 			</div>
 		</md-toolbar>
 
-		<md-dialog-content style="max-height:60%;">
+		<md-dialog-content style="max-height:40%;">
 			<md-list flex>
 				<md-subheader class="md-no-sticky">
 					<md-icon aria-label="Icon" class="material-icons">person</md-icon> Owner Informations</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null">
-					<div class="md-list-item-text" layout="column" layout-align="center center">
+					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{owner.firstname}} {{owner.lastname}}</h3>
 						<h4>{{owner.phone}}</h4>
 					</div>
@@ -23,7 +23,7 @@
 				<md-divider ></md-divider>
 				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">location_on</md-icon> Location</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null">
-					<div class="md-list-item-text" layout="column" layout-align="center center">
+					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{p.address.city}}</h3>
 						<h4>{{p.address.country}}</h4>
 					</div>
@@ -31,7 +31,7 @@
 				<md-divider ></md-divider>
 				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">info</md-icon> Parking Informations</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null">	
-					<div class="md-list-item-text" layout="column" layout-align="center center">
+					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{p.type}}</h3>
 						<h3>{{p.width}}</h3>
 					</div>
@@ -39,14 +39,14 @@
 				<md-divider ></md-divider>
 				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon> Price</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null"> 
-					<div class="md-list-item-text" layout="column" layout-align="center center">
+					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{p.price}} €</h3>
 					</div>
 				</md-list-item>
 				<md-divider ></md-divider>
-				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">description</md-icon> Owner Informations</md-subheader>
+				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">description</md-icon> Other Informations</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null">
-					<div class="md-list-item-text" layout="column" layout-align="center center">
+					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{p.description}}</h3>
 					</div>
 				</md-list-item>	

@@ -3,33 +3,26 @@
 		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h1>Register</h1>
+		<h1>Login</h1>
 	</div>
 	<span flex=""></span>
 </md-toolbar>
 <div layout="column" layout-fill>
-	<div layout="row" layout-align="center center">
-		<md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
-			<div id="mainLoginFormContainer">
-			 <md-toolbar>
-				<div class="md-toolbar-tools">
-            		<h2><span>Login<span></h2>
-          		</div>
-          	</md-toolbar>
-				<form action="/user/Login" method="post" id="mainLoginForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column'>
-					<md-input-container flex='105' md-no-float>
-						<md-icon aria-label="Icon" class="material-icons">email</md-icon>
-						<input type="email" name="username" id="username" required="required" class="validate" placeholder="Mail" required="required">
-					</md-input-container>
-					<md-input-container flex='105' md-no-float>
-						<md-icon aria-label="Icon" class="material-icons">lock</md-icon>
-						<input name="password" id="password" class="validate" placeholder="Password" type="password" required="required" />
-					</md-input-container>
-				    <div class="footerMainLoginForm">
-				    	<md-button type='submit' class=" md-raised md-hue-1">Connexion</md-button>
-					</div>
-				</form>
-			<div>
-		</md-card>
+	<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center" >
+		<div id="mainLoginFormContainer" style="width:40%;">
+			<form action="/user/Login" method="post" id="mainRegisterForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column' style="padding: 5%;">
+				<md-input-container flex='105' md-no-float>
+					<md-icon aria-label="Icon" class="material-icons">email</md-icon>
+					<input type="email" name="username" id="username" required="required" class="validate" placeholder="Mail" required="required">
+				</md-input-container>
+				<md-input-container flex='105' md-no-float>
+					<md-icon aria-label="Icon" class="material-icons">lock</md-icon>
+					<input name="password" id="password" class="validate" placeholder="Password" type="password" required="required" />
+				</md-input-container>
+			    <div layout="row" layout-align="center center">
+			    	<md-button type='submit' class=" md-raised md-hue-1">Login</md-button>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
