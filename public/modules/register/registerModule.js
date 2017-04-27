@@ -37,7 +37,7 @@ registerModule.controller('RegisterController', ['$scope' ,'$location','$http', 
 	$scope.submitForm = function (formvalid) {
 		$http.post('/user/create-user/', {newUser:$scope.newUser}).
 			success(function(data, status, headers, config) {
-			$location.path('/');
+			$location.path('/login');
 			$mdToast.show($mdToast.simple()
 					.content("Account created")
 					.position('top right')

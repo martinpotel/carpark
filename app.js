@@ -16,6 +16,7 @@ var user = require('./routes/user');
 var parking = require('./routes/parking');
 var message = require('./routes/message');
 var booking = require('./routes/booking');
+var stats = require('./routes/stats');
 /* Initialize express app */
 var app = express();
 
@@ -54,6 +55,7 @@ app.use('/user', user);
 app.use('/parking', parking);
 app.use('/message', message);
 app.use('/booking', booking);
+app.use('/stats',stats);
 app.use('/public',  express.static(path.join(__dirname, '/public')));
 /* Catch 404 and forward to error handler */
 app.use(function(req, res, next) {

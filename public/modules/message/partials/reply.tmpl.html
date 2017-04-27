@@ -15,20 +15,20 @@
 					<div layout="row" layout-align="center center">
 						<md-input-container flex="80" class="md-icon-float">
 							<label>To</label>
-							<input>{{message.fromString}}</input>
+							<p style="margin-top: 30px">{{message.fromString}}</p>
 						</md-input-container>
 					</div>
 					<div layout="row" layout-align="center center">
 						<md-input-container flex="80" class="md-icon-float">
 							<label>Message</label>
-							<input>{{message.content}}</input>
+							<p style="margin-top: 30px">{{message.content}}</p>
 						</md-input-container>
 					</div>
 
 					<div layout="row" layout-align="center center">
 						<md-input-container class="md-icon-float" flex="80">
 							<label>Answer</label>
-							<textarea ng-model="reply.content" name="textcontent" columns="1" rows="7" required></textarea>
+							<textarea ng-model="reply.content" name="textcontent" columns="40" rows="7" required></textarea>
 						</md-input-container>
 					</div>
 					<div style="text-align:center">

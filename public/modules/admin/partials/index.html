@@ -10,19 +10,13 @@
 
 <div>	
 	<md-content class="md-padding">
-		<md-tabs class="md-accent" md-dynamic-height md-border-bottom>
-			<md-tab id="logs">
-				<md-tab-label>Logs</md-tab-label>
-				<md-tab-body>
-
-				</md-tab-body>
-			</md-tab>
+		<md-tabs class="md-accent" md-dynamic-height md-border-bottom md-center-tabs style="margin-left: 10%;margin-right: 10%">
 			<md-tab id="users">
 				<md-tab-label>Users</md-tab-label>
 				<md-tab-body layout-align="center center">
-				<h2 class="md-title" style="color:#333;">Users</h2>
-					<md-list>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="u in users" >
+				<h2 class="md-title" style="color:#333;text-align: center">Users</h2>
+					<md-list style="margin-left: 10%;margin-right: 10%">
+							<md-list-item ng-click="" class="md-3-line md-accent"  ng-repeat="u in users" >
 								<div class="md-list-item-text" layout="column">
 									<h3>{{ u.firstname }} {{u.lastname}}</h3>
 									<h4>{{u.mail}}</h4>
@@ -44,10 +38,51 @@
 				</md-tab-body>
 			</md-tab>
 			<md-tab id="grpahs">
-				<md-tab-label>Graphs</md-tab-label>
+				<md-tab-label>Charts</md-tab-label>
 				<md-tab-body>
-
+					<div layout="column" layout-fill>
+						<md-content class="md-padding" layout-xs="column" layout="column">
+							<div flex-xs flex-gt-xs="50" layout="column">
+								<md-card>
+									<h2 class="md-title" style="color:#333;text-align: center">Users : {{ages.count}}</h2>
+									<div layout="row" layout-align="center center">
+										<div layout="column" layout-align="center center">
+											<h4 style="text-align: center"> Age of the users </h4>
+											<canvas id="doughnut" class="chart chart-doughnut" chart-data="ages.values" chart-labels="ages.labels"></canvas> 
+										</div>
+									</div>
+								</md-card>
+							</div>
+							<div flex-xs flex-gt-xs="50" layout="column">
+								<md-card>
+									<h2 class="md-title" style="color:#333;text-align: center">Parkings : {{parkings.types.count}}</h2>
+									<div layout="row" layout-align="center center">
+										<div layout="column" layout-align="center center">
+											<h4 style="text-align: center"> Types</h4>
+											<canvas id="doughnut" class="chart chart-doughnut" chart-data="parkings.types.values" chart-labels="parkings.types.labels"></canvas>
+										</div>
+										<div layout="column" layout-align="center center">
+											<h4 style="text-align: center"> Width </h4>
+											<canvas id="doughnut" class="chart chart-doughnut" chart-data="parkings.sizes.values" chart-labels="parkings.sizes.labels"></canvas>
+										</div>
+									</div>
+								</md-card>
+							</div>
+							<div flex-xs flex-gt-xs="50" layout="column">
+								<md-card>
+									<h2 class="md-title" style="color:#333;text-align: center">Bookings : {{bookings.count}}</h2>
+									<div layout="row" layout-align="center center">
+										<div layout="column" layout-align="center center">
+											<h4 style="text-align: center"> Duration (days)</h4>
+											<canvas id="doughnut" class="chart chart-doughnut" chart-data="bookings.values" chart-labels="bookings.labels"></canvas>
+										</div>
+									</div>
+								</md-card>
+							</div>
+						</md-content>
+					</div>
 				</md-tab-body>
+
 			</md-tab>
 		</md-tabs>
 	</md-content>

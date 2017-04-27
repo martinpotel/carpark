@@ -33,12 +33,16 @@
 						</md-input-container>
 					</div>
 					<md-input-container flex='105' md-no-float>
+						<md-icon aria-label="Icon" class="material-icons">cake</md-icon>
+						<input required type="number" step="any" name="date" placeholder="Year of birth" ng-model="newUser.birth">
+					</md-input-container>
+					<md-input-container flex='105' md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">email</md-icon>
 						<input name="mail" type="email" class="validate" placeholder="Mail" required="required" ng-model="newUser.mail">
 					</md-input-container>
 					<md-input-container md-no-float>
 						<md-icon aria-label="Icon" class="material-icons">phone</md-icon>
-      					<input ng-model="newUser.phone" type="text" placeholder="Phone Number" required="required" ng-model="newUser.mail">
+      					<input ng-model="newUser.phone" type="number" placeholder="Phone Number" required="required" ng-model="newUser.mail">
     				</md-input-container>
 
 

@@ -6,6 +6,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var ObjectId = require('mongodb').ObjectID;
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
+var async = require('async');
 
 //register
 router.post('/user-check-info/', function(req, res) {
@@ -88,7 +89,7 @@ router.get('/logs/:id', function(req, res) {
 
 router.post('/create-user/', function (req, res) {
     var db = req.app.locals.db;
-    console.log(req);   
+    req.body.newUser.admin = false;  
     db.collection('users').save(req.body.newUser, function(err, tuto) {
         res.send('ok');
     });
@@ -116,15 +117,14 @@ router.post('/update-profile/', function(req,res){
     var userToSave = req.body.user;
     userToSave._id = new ObjectId(req.body.user._id);
     usersCollection.save(userToSave, function (err, doc) {
-        console.log(doc);
         req.logIn(userToSave, function(error) {
             if (!error) {
-                // successfully serialized user to session
                 res.send(req.user);
             }
         });
         
     });
 });
+
 
 module.exports = router;

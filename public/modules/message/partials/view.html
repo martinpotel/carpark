@@ -15,7 +15,7 @@
 				<md-card-content>
 					<h2 class="md-title" style="color:#333;">Messages</h2>
 					<md-list>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="m in messages" ng-click="null">
+							<md-list-item class="md-3-line md-accent"  ng-repeat="m in messages" ng-click="reply($event, m)">
 								<div>
 									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
 										<md-icon ng-if="m.read" aria-label="Icon" class="material-icons">check_circle</md-icon>	
@@ -24,8 +24,7 @@
 								</div>
 								<div class="md-list-item-text" layout="column">
 									<h3><md-icon aria-label="Icon" class="material-icons">person</md-icon> {{ m.fromString }}</h3>
-									<h4><md-icon aria-label="Icon" class="material-icons">subject</md-icon> Parking {{m.parking}}</h4>
-									<p>{{ m.content}}</p>
+									<h4><md-icon aria-label="Icon" class="material-icons">subject</md-icon> Parking {{m.parking}}</h4>	
 								</div>
 								<div>
 									<md-button ng-href="" class="md-icon-button" ng-click="read($event, m)">
