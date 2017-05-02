@@ -16,14 +16,17 @@ router.post('/create/', function (req, res) {
     db.collection('parking').findOne({_id: new ObjectId(req.body.booking.parking)}, function(err, parking) {
 		if(parking == null) res.send({'error': 'Not found'});
 		else {
-			if (isAvailable(booking, parking)){
-				db.collection('booking').save(booking, function(err, doc) {
-	        		res.send('ok');
-	   			 });
-			}
-			else {
-				res.send({'error':'Not Available'});
-			}
+			isAvailable(booking, parking, db, function(err, isAvailable) {
+				console.log('available:' + isAvailable);
+				if (isAvailable) {
+					db.collection('booking').save(booking, function(err, doc) {
+	        			res.send('ok');
+	   			 	});
+				}else{
+					res.send({'error':'parking not available'});
+				}
+				
+			});
 		}
 	});
 });
@@ -87,6 +90,7 @@ router.get('/user/:id', function(req, res) {
 	var db = req.app.locals.db;
 	var booking = db.collection('booking');
 	var bookingRes = [];
+	var date = new Date();
 
 	booking.find({tenant:req.params.id}).toArray(function(err, bookings) {	
 		if(bookings == null) res.send({'error': 'Not found'});
@@ -98,16 +102,21 @@ router.get('/user/:id', function(req, res) {
 						db.collection('users').findOne({_id: new ObjectId(parking.user)}, function(err, owner) {
 							if(result == null) res.send({'error': 'Not found'});
 							else {
-								var booking = result;
-								booking.parking = parking;
-								booking.owner = owner;
-								delete booking.owner.admin;
-								delete booking.owner.password;
-								delete booking.owner.passwordConfirm;
-								delete booking.owner.gender;
-								delete booking.owner.description;
+								console.log(result.dates.end);
 
-								bookingRes.push(booking);
+								if (new Date(result.dates.end)>date) {
+
+									var booking = result;
+									booking.parking = parking;
+									booking.owner = owner;
+									delete booking.owner.admin;
+									delete booking.owner.password;
+									delete booking.owner.passwordConfirm;
+									delete booking.owner.gender;
+									delete booking.owner.description;
+
+									bookingRes.push(booking);
+								}
 								cbResult();	
 							}
 						});				
@@ -119,31 +128,36 @@ router.get('/user/:id', function(req, res) {
 });
 
 
-/* variable make no sense*/
+/* variables make no sense*/
 router.get('/owner/:id', function(req, res) {
 	var db = req.app.locals.db;
 	var booking = db.collection('booking');
 	var bookingRes = [];
+	var date = new Date();
+
 
 	booking.find({owner:req.params.id}).toArray(function(err, bookings) {	
 		if(bookings == null) res.send({'error': 'Not found'});
 		else {
 			async.forEach(bookings, function(result, cbResult) {
+				
 				db.collection('parking').findOne({_id: new ObjectId(result.parking)}, function(err, parking) {
 					if(result == null) res.send({'error': 'Not found'});
 					else {
 						db.collection('users').findOne({_id: new ObjectId(result.tenant)}, function(err, tenant) {
 							if(result == null) res.send({'error': 'Not found'});
-							else {
-								var booking = result;
-								booking.parking = parking;
-								booking.owner = tenant;
-								delete booking.owner.admin;
-								delete booking.owner.password;
-								delete booking.owner.passwordConfirm;
-								delete booking.owner.gender;
-								delete booking.owner.description;
-								bookingRes.push(booking);
+							else {	
+								if (new Date(result.dates.end)>date) {
+									var booking = result;
+									booking.parking = parking;
+									booking.owner = tenant;
+									delete booking.owner.admin;
+									delete booking.owner.password;
+									delete booking.owner.passwordConfirm;
+									delete booking.owner.gender;
+									delete booking.owner.description;
+									bookingRes.push(booking);
+								}
 								cbResult();	
 							}
 						});				
@@ -157,9 +171,31 @@ router.get('/owner/:id', function(req, res) {
 
 
 
-// TODO
-isAvailable = function (booking, parking) {
+
+isAvailable = function (booking, parking, db, cb) {
+	
+	var available = true;
+	db.collection('booking').find({parking:booking.parking}).toArray(function(err, result) {
+        async.each(result, function(book, cbResult) {
+        	var dateStart = new Date (book.dates.start);
+			var dateEnd   = new Date (book.dates.end);
+
+        	if (dateStart >= new Date(booking.dates.start) && new Date(booking.dates.start) <= dateEnd ||
+        		dateStart >= new Date(booking.dates.end) && new Date(booking.dates.end) <= dateEnd ) {
+        	    	if (!book.declined)	available = false;	
+        		
+        	}
+    
+            cbResult(); 
+        },function () {
+            cb(null,available);
+        });  
+    });
+
 	/*
+
+	console.log(parking);
+
 	var dateStart = new Date (parking.dates.start);
 	var dateEnd   = new Date (parking.dates.end);
 
@@ -169,8 +205,8 @@ isAvailable = function (booking, parking) {
 
 	console.log(dateEnd-dateStart);
 	
-	*/
 	return true;
+	*/
 
 }
 

@@ -38,6 +38,7 @@
 		<script type="text/javascript" src="/modules/admin/adminModule.js"></script>
 
 		<script type="text/javascript" src="/modules/home/homeModule.js"></script>
+		<script type="text/javascript" src="/modules/find/findModule.js"></script>
 		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
 		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
 		<script type="text/javascript" src="/modules/register/registerModule.js"></script>
@@ -61,10 +62,14 @@
 				<md-icon aria-label="Icon" class="material-icons">public</md-icon> Carparking
 			</h4>
 			<md-list class="mainMenuList">
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/find" class="md-list-item-text"><i class="material-icons md-avatar-icon">search</i> <span class="mainMenuTextItem">
+					Find a car park</span></a>
+				</md-list-item>
 				<% if(user) { %>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">
-					Rent your parking</span></a>
+					Rent your car park</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/messages" class="md-list-item-text"><i class="material-icons md-avatar-icon">mail</i> <span class="mainMenuTextItem">Messages</span></a>

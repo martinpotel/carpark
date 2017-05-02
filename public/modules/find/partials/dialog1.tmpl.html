@@ -17,13 +17,13 @@
 				<md-list-item class="md-3-line" ng-click="null">
 					<div class="md-list-item-text" layout="column" layout-align="start start">
 						<h3>{{owner.firstname}} {{owner.lastname}}</h3>
-						<h4>{{owner.phone}}</h4>
 					</div>
 				</md-list-item>
 				<md-divider ></md-divider>
 				<md-subheader class="md-no-sticky"><md-icon aria-label="Icon" class="material-icons">location_on</md-icon> Location</md-subheader>
 				<md-list-item class="md-3-line" ng-click="null">
 					<div class="md-list-item-text" layout="column" layout-align="start start">
+						<h4>{{p.address.streetNumber}} {{ p.address.street }}</h4>
 						<h3>{{p.address.city}}</h3>
 						<h4>{{p.address.country}}</h4>
 					</div>

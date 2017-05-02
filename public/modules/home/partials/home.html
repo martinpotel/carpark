@@ -7,6 +7,16 @@
 
 <div layout="column" layout-fill>
 	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countReservation>0 || countMsg>0 || countBooking>0">
+			<div style="display:block; margin-top:15px;">
+				<div class="infoBox" layout='row' layout-align="center center">
+					<md-icon>info</md-icon>
+					<div flex >
+						Notifications
+					</div>
+				</div>
+			</div>
+		</div>
 		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countReservation>0">
 			<md-card>
 				<md-card-content layout="rown" layout-align="start start">
@@ -34,64 +44,34 @@
 				</md-card-content>
 			</md-card>
 		</div>
-		<div flex-xs flex-gt-xs="50" layout="column">
-			<md-card>
-				<md-card-content>
-					<h2 class="md-title" style="color:#333;">Find a Parking</h2>
-					<div  layout="row" layout-align="center center">
-						<input vs-google-autocomplete
-							ng-model="adress.lib" 
-							vs-latitude="map.lat"
-	    					vs-longitude="map.long" 
-							ng-change="printAdress()" 
-							name="address" type="text" 
-							style="width: 80%">
-			  			<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
-			  			<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
-			  			<md-button ng-click="centerMap()" class="md-fab">
-							<md-icon aria-label="Icon" class="material-icons">search</md-icon>
-						</md-button>
-					</div>
-				</md-card-content>
-			</md-card>
-		</div>
-		<div flex-xs flex-gt-xs="50" layout="row">
-		    <div flex-xs flex-gt-xs="50" layout="column">
-				<md-card>
-					<md-card-content>
-						<md-list>
-							<md-subheader class="md-no-sticky">Parkings</md-subheader>
-							<md-list-item class="md-3-line md-accent"  ng-repeat="p in parkings" ng-click="selectPark(p)" >
-								<div class="md-list-item-text" layout="column">
-									<h3>{{ p.address.city }}</h3>
-									<h4>{{p.address.streetNumber}}, {{ p.address.street }}</h4>
-									<p>{{ p.type}}</p>
-								</div>
-								<div>
-									<md-button ng-href="" class="md-icon-button" ng-click="showAlert($event,p)">
-										<md-icon aria-label="Icon" class="material-icons">launch</md-icon>	
-									</md-button>
-								</div>
-							</md-list-item>
-						</md-list>
-					</md-card-content>
+		<div layout-wrap layout="row" layout-align="center start" class="homeDisplay">
+			<a ng-href="#/rent" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
+				<md-card flex>
+				 	<img src="/public/images/home_add.png" class="md-card-image">
+				 	<md-card-content>
+				 		<h2 class="md-title" style="text-align: center">Rent</h2>
+				 	</md-card-content>
 				</md-card>
-			</div>
-			<div flex-xs flex-gt-xs="50" layout="column">
-				<md-card>
-					<md-card-content>
-						<ng-map zoom="15" center="{{map.lat}},{{map.long}}">
-						    <marker 
-						    	no-watcher="true"
-					  			ng-repeat="p in parkings"
-					  			position="{{p.address.location.lat}}, {{p.address.location.long}}"
-					  			on-click="showAlert(p)">	
-					  		</marker>
-						</ng-map>
-					</md-card-content>
+			</a>
+
+			<a ng-href="#/find" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
+				<md-card flex>
+				 	<img src="/public/images/home_find.png" class="md-card-image">
+				 	<md-card-content>
+				 		<h2 class="md-title" style="text-align: center">Find</h2>
+				 	</md-card-content>
 				</md-card>
-			</div>
+			</a>
+			<a ng-href="#/profile" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
+				<md-card flex>
+				 	<img src="/public/images/home_edit.png" class="md-card-image">
+				 	<md-card-content>
+				 		<h2 class="md-title" style="text-align: center">Profile</h2>
+				 	</md-card-content>
+				</md-card>
+			</a>
 		</div>
+	</div>
 	</md-content>
 </div>
 

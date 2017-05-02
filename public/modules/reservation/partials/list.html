@@ -10,15 +10,23 @@
 
 <div layout="column" layout-fill>	
 	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div style="display:block; margin-top:15px;">
+			<div class="infoBox" layout='row' layout-align="center center">
+				<md-icon>info</md-icon>
+				<div flex >
+					There is the current reservations of your car parks. You may accept or decline a reservation. The tenant will be informed of your choice.  
+				</div>
+			</div>
+		</div>
   		<div flex-xs flex-gt-xs="50" layout="column">
 			<md-card>
 				<md-card-content>
-					<h2 class="md-title" style="color:#333;">List of the reservations</h2>
+					<h2 class="md-title" style="color:#333;">List of my parking(s) reservation(s)</h2>
 					<md-list ng-cloak>
 							<md-list-item class="md-3-line md-accent"  ng-repeat="b in bookings" layout="row" ng-click="null">
 								<div class="md-list-item-text" layout="column">
 									<h3>{{b.parking.address.street}}, {{b.parking.address.city}}</h3>
-									<h4>From <b>{{b.dates.start | date:'d/M/yy' }}</b> to <b>{{ b.dates.start | date:'d/M/yy'}}</b></h4>
+									<h4>From <b>{{b.dates.start | date:'d/M/yy' }}</b> to <b>{{ b.dates.end | date:'d/M/yy'}}</b></h4>
 									<h4 ng-if="b.accepted" style="color:green">Accepted</h4>
 									<h4 ng-if="!b.accepted && !b.declined" style="color:grey">Waiting</h4>
 									<h4 ng-if="b.declined" style="color:red">Declined</h4>

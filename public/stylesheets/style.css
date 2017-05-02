@@ -5,7 +5,7 @@
 .colorNormal {
 	color: rgba(0,0,0,0.87);
 }
-.homeNewSimulation a {
+.homeDisplay a {
 	text-decoration: none !important;
 	color: rgba(0,0,0,0.87) !important;
 }
@@ -83,40 +83,32 @@ main-menu-button i, .mainMenuButton {
 	}
 }
 
-.searchToolBar {
-	margin-top: 13px;
+.infoBox {
+	background-color:#8C9EFF;
+	color:#FFF;
+	padding:10px;
+	margin:0 10px 5px 10px;
+	border-radius:2px;
 }
 
-.mainSearchInput {
-	background:rgba(255,255,255,0.8);
-	border:1px solid #666;
-	border-radius: 5px;
-	border: none;
-	padding:6px;
-	padding-left:10px;
-	font-family: Roboto,'Helvetica Neue',sans-serif;
-	outline-width: 0;
+.infoBox md-icon {
+	color:white;
+	margin-right:5px;
 }
+
+.mobileMenuLogo {
+	height:83px;
+	width: 130px;
+	margin:auto;
+}
+
+
 
 .fadeIn {
 	transition:0.2s linear all;
 }
 
-.searchBarToolbar {
-	transition:0.1s linear all;
-	position: absolute;
-	width: 100%;
-	top:0;
-	z-index: 4;
-}
 
-.searchBarToolbar:not(.ng-hide) {
-	opacity:1;
-}
-
-.searchBarToolbar.ng-hide {
-	opacity:0;
-}
 
 .fadeIn.ng-enter {
 	opacity:0;
@@ -126,11 +118,7 @@ main-menu-button i, .mainMenuButton {
 	display:none;
 }
 
-.mobileMenuLogo {
-	height:83px;
-	width: 130px;
-	margin:auto;
-}
+
 
 md-menu-item i {
 	padding-top: 5px;
@@ -142,18 +130,6 @@ md-menu-content {
 	color:#666;
 }
 
-.simulationTabsToolbar {
-	min-height: 49px;
-	background:transparent !important;
-}
-
-.simulationTabsToolbar md-tab-item[aria-selected='false'] span {
-	color:rgba(0,0,0,0.87);
-}
-
-.simulationTabsToolbar > md-tabs > md-tabs-wrapper {
-	background:transparent;
-}
 
 md-radio-button {
   display: inline;
@@ -163,308 +139,6 @@ md-input-container.md-icon-float>md-icon {
 	color:#999;
 }
 
-ul.preselectAidesScenario {
-	margin:0;
-	text-align: center;
-	padding:0;
-}
-
-ul.preselectAidesScenario li {
-	display: inline-block;
-	width:300px;
-	border:1px solid #e0e0e0;
-	padding:3px;
-	margin:3px;
-	height:160px;
-	cursor: pointer;
-	vertical-align: top;
-	text-align: left;
-}
-
-ul.preselectAidesScenario li strong {
-	text-align: center;
-	display: block;
-	padding-right: 15px;
-}
-
-ul.preselectAidesScenario li strong md-checkbox {
-	margin-bottom: 0;
-}
-
-ul.preselectAidesScenario li em {
-	color:#666;
-	text-align: right;
-	display: block;
-}
-
-ul.preselectAidesScenario li.selected em {
-	color:#CCC;
-}
-
-ul.preselectAidesScenario li span {
-	display: block;
-}
-
-ul.preselectAidesScenario li button.md-button:hover {
-	background:transparent;
-}
-
-ul.preselectAidesScenario li button.md-button {
-	width:117px;
-	padding:0;
-	text-align: center;
-	margin:0 10px 0 10px;
-}
-
-ul.preselectAidesScenario li button.md-button md-icon {
-	display:inline;
-	padding-top:5px;
-	margin-right: 0;
-}
-
-ul.preselectAidesScenario li button.md-button span {
-	display: inline;
-}
-
-ul.preselectAidesScenario li .listAides {
-	color:#666;
-	font-size: 14px;
-	text-align: center;
-}
-
-.listdetailstravaux a {
-	display: block;
-	margin-top:20px;
-	margin-bottom: 20px;
-	background:white;
-	display: block;
-	text-align: left;
-	cursor:pointer;
-	white-space: nowrap;
-	overflow:hidden;
-	border-top-right-radius:21px;
-	border-bottom-right-radius:21px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
-}
-
-.listdetailstravaux a.active p {
-	font-weight: bold;
-}
-
-.listdetailstravaux p {
-	padding:0;
-	margin:0;
-	padding-left: 10px;
-	padding-bottom:10px;
-	padding-top:10px;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-.listdetailstravaux {
-	padding-left:10px;
-}
-
-.listdetailstravaux .secondary-content {
-	float:right;
-	border-radius:21px;
-	height:41px;
-	width: 41px;
-	text-align: center;
-}
-
-.listdetailstravaux .secondary-content.active {
-	background-color:rgb(255,209,128);
-	color:#FFF;
-}
-
-.listdetailstravaux .primary-content {
-	float:left;
-	border-radius:20px;
-	height:40px;
-	width: 40px;
-	margin-left:-17px;
-	text-align: center;
-}
-
-.listdetailstravaux .secondary-content i, .listdetailstravaux .primary-content i {
-	margin-top: 8px;
-}
-
-table.amountTable {
-	width:100%;
-}
-
-table.amountTable td {
-	padding:5px;
-}
-
-table.amountTable tr.widthPadding td {
-	padding:15px 10px 15px 10px;
-}
-
-table.amountTable th {
-	padding:5px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-table.amountTable md-input-container {
-	padding:0;
-	margin-top:5px;
-	margin-bottom: -17px;
-}
-
-table.amountTable tbody tr {
-	transition: background-color 0.5s ease;
-	background-color:#FFF;
-}
-
-table.amountTable tbody tr:hover {
-	background-color:#E6E6E6;
-}
-
-.infoModalDir {
-	display: none;
-}
-
-p.legalInfo {
-	color:#666 !important;
-	text-align: center !important;
-	font-size: 14px !important;
-}
-
-p.legalInfo a {
-	text-decoration: underline;
-	cursor:pointer;
-}
-
-.elementCollectionSubForm {
-	margin-top:10px;
-	margin-bottom: 10px;
-}
-
-.elementCollectionSubForm > div {
-	width:49%;
-	display:inline-block;
-}
-
-.elementCollectionSubForm > div > md-input-container {
-	padding:2px !important;
-	margin-top:5px;
-	margin-bottom: 5px;
-	padding-right:10px;
-}
-
-.elementCollectionSubForm md-checkbox {
-	margin-top: 12px;
-	margin-left: 10px;
-}
-
-.simulationResultDetails {
-	margin-bottom:10px;
-	text-align: center;
-}
-
-.simulationResultDetails > div {
-	width: 170px;
-	display: inline-block;
-	margin-right:3%;
-	margin-left:3%;
-	margin-bottom:15px;
-}
-
-.simulationResultDetails i {
-	float:left;
-	padding-top:10px;
-	margin-right: 10px;
-	color:#999;
-}
-
-.simulationResultDetails .maininfo {
-	color:#333;
-	font-size: 20px;
-	display: block;
-	font-weight: normal;
-}
-
-.simulationResultDetails .subinfo {
-	color:#999;
-	font-size: 14px;
-	display: block;
-}
-
-.simulationResultTitle {
-	text-align: center;
-	padding:0;
-	margin:15px;
-}
-
-h5.addSimulationSubTitle {
-	margin:5px 0 20px 0;
-}
-
-md-input-container.md-default-theme, md-input-container label, md-input-container.md-default-theme, md-input-container .md-placeholder, md-select.md-default-theme, md-select .md-select-value.md-select-placeholder {
-	color:rgba(0,0,0,.65);
-}
-
-button.selectFinalSimulationButton {
-	float:right;
-}
-
-button.selectFinalSimulationButton md-icon {
-	margin-bottom: 4px;
-	margin-right: 8px;
-}
-
-.errorMessage {
-	width: 100%;
-	background-color:#ff8181;
-	color:#880000;
-	padding:10px;
-	text-align: center;
-	border-radius:2px;
-	border:1px solid #880000;
-	display: block;
-}
-
-h3.addSimulationFromList {
-	display: block;
-	width: 100%;
-	color:#333;
-	text-align: center;
-	padding: 0;
-	margin: 0;
-}
-
-h3.addSimulationFromList md-icon {
-	color:inherit;
-	margin-top: -5px;
-}
-
-p.infoProfileEdit {
-	color:#666;
-	font-size: 14px;
-}
-
-md-option.mdOptionMobileTravauxList div.md-text {
-	width:100%;
-}
-
-md-option.mdOptionMobileTravauxList div.md-text > md-icon {
-	float:right;
-	margin-top:-4px;
-}
-
-md-select.mdSelectMobileTravauxList.ng-touched > md-select-value {
-	overflow:hidden;
-}
-
-md-select.mdSelectMobileTravauxList.ng-touched > md-select-value > span {
-	margin-left:-25px;
-}
 
 em.roleinfo {
 	color:#666;
@@ -472,60 +146,7 @@ em.roleinfo {
 	margin-top: 5px;
 }
 
-div.newSimulationActions {
-	background:#424249;
-	text-align:center;
-}
 
-div.newSimulationActions > div {
-	display:inline-block;
-	width:20%;
-	margin:10px 3% 10px 3%;
-	color:#F5F5F5;
-	cursor: pointer;
-	vertical-align:top;
-	border:1px solid rgba(0,0,0,0);
-	min-height: 50px;
-}
-
-div.newSimulationActions > div:hover {
-}
-
-div.newSimulationActions > div md-icon {
-	color:#F5F5F5;
-	font-size:40px;
-	width: 40px;
-	display: block;
-	margin-top: 5px;
-}
-
-div.newSimulationActions > div span {
-	display: block;
-	font-size: 12px;
-	margin-top: 35px;
-	margin-bottom: 5px;
-	text-transform: uppercase;
-}
-
-div.newSimulationActions > div > a {
-	color:inherit !important;
-	text-decoration: none;
-}
-
-div.newSimulationActions div.errorMaxQuota {
-	width:90%;
-	padding:10px;
-	margin:20px;
-	margin-top:0;
-	background-color:#FFF;
-	border-radius: 2px;
-	color:#B71C1C;
-	cursor: default;
-}
-
-div.newSimulationActions div.errorMaxQuota a > span {
-	margin:0;
-}
 
 div[ng-message] {
 	color:rgb(244,67,54);
@@ -612,219 +233,9 @@ md-tabs[md-border-bottom] md-tabs-wrapper {
 	border-width:0 !important;
 }
 
-.selectTravauxMain .md-title {
-	margin-top:0;
-	text-align: center;
-}
-
-.selectTravauxMain md-card-content {
-	padding-bottom:0;
-}
-
-.selectTravauxMain md-checkbox {
-	display:block;
-}
-
-table.transactionPreviewTable {
-	width: 100%;
-	border:1px solid #CCC;
-	border-collapse: collapse;
-}
-
-table.transactionPreviewTable td, table.transactionPreviewTable th {
-	border-top:1px solid #CCC;
-	border-bottom:1px solid #CCC;
-	padding:10px;
-}
-
-table.transactionPreviewTable td.alignRight, table.transactionPreviewTable th.alignRight {
-	text-align: right;
-}
-
-table.transactionPreviewTable th {
-	color:#666;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-size: 14px;
-}
-
-table.transactionPreviewTable em {
-	color:#666;
-	font-size: 12px;
-}
 
 
-table.resultTestTable caption {
-	border-top:1px solid #CCC;
-	border-left:1px solid #CCC;
-	border-right:1px solid #CCC;
-	border-collapse: collapse;
-}
-
-table.resultTestTable {
-	width: 100%;
-	border:1px solid #CCC;
-	border-collapse: collapse;
-}
-
-table.resultTestTable td, table.resultTestTable th {
-	border-top:1px solid #CCC;
-	border-bottom:1px solid #CCC;
-	padding:8px;
-}
-
-table.resultTestTable td.alignRight, table.resultTestTable th.alignRight {
-	text-align: right;
-}
-
-table.resultTestTable th {
-	color:#666;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-size: 12px;
-}
-
-table.resultTestTable em {
-	color:#666;
-	font-size: 12px;
-}
 
 
-table.adminTable {
-	border:0;
-	border-collapse: collapse;
-}
 
-table.adminTable th {
-	border-bottom:1px solid #CCC;
-	color:#666;
-	text-transform: uppercase;
-	text-align: center;
-	padding:15px;
-}
 
-table.adminTable td {
-	border-top:1px solid #CCC;
-	border-bottom: 1px solid #CCC;
-	padding:0;
-}
-
-table.adminTable.withPadding td {
-	padding:15px;
-}
-
-table.adminTable tbody tr:hover {
-	background-color: #F5F5F5;
-}
-
-table.adminTable a {
-	text-decoration: none !important;
-	display: block;
-	height:100%;
-	width: 100%;
-	padding:15px;
-}
-
-.selectionDispositifs md-radio-button {
-	display: block !important;
-}
-
-.tutorialHelpbox {
-	background-color:#3e75a4;
-	color:#FFF;
-	padding:10px;
-	margin:0 10px 5px 10px;
-	border-radius:2px;
-}
-
-.tutorialHelpbox md-icon {
-	color:white;
-	margin-right:5px;
-}
-
-div.badge {
-	border-radius:4px;
-	padding:2px 5px 2px 5px;
-	color:white;
-	display:inline;
-	font-size:11px;
-}
-
-div.badge.orange {
-	background-color:rgba(255,171,64,0.87);
-}
-
-div.badge.gray {
-	background-color:rgba(111,111,111,0.87);
-}
-
-div.badge.green {
-	background-color:rgba(0,165,0,0.87);
-}
-
-rge-tutorial {
-	display: block;
-	margin:auto;
-	margin-top:15px;
-	margin-bottom:0;
-}
-
-.radioRequester {
-	padding: 5px;
-}
-
-.alignRequester {
-	margin-right:5px;
-	margin-top:28px;
-}
-
-.mdSelectRequester {
-	margin-left:5px;
-}
-
-#amountTableEditTVA {
-	text-align:right;
-	color:#666;
-	padding:5px;
-	text-decoration:underline;
-	cursor:pointer;
-	font-size:12px;
-}
-
-.text-size-slider {
-  line-height: 100%;
-  font-size: 14px;
-}
-
-.text-size-slider .small-letter,.text-size-slider .big-letter
-{
-  font-weight: bold;
-}
-
-.text-size-slider .slider {
-  -webkit-appearance: none;
-  margin: 0 8px;
-}
-
-.text-size-slider .slider:focus {
-  outline: none;
-}
-
-.text-size-slider .slider::-webkit-slider-thumb {
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-  background-color: white;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin-top: -6px;
-}
-
-.text-size-slider .slider::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 2px;
-  cursor: pointer;
-  background: white;
-  border: 0;
-}

@@ -10,6 +10,14 @@
 
 <div layout="column" layout-fill>	
 	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div style="display:block; margin-top:15px;">
+			<div class="infoBox" layout='row' layout-align="center center">
+				<md-icon>info</md-icon>
+				<div flex style="text-align: center">
+					Create an advert for your car park. 
+				</div>
+			</div>
+		</div>
   		<div flex-xs flex-gt-xs="50" layout="column">
 			<md-card>
 
@@ -55,21 +63,21 @@
 				<md-card-content>
 				<md-icon aria-label="Icon" class="material-icons">settings</md-icon>
 					<div  layout="row" layout-align="center center">
-					<md-input-container style=" width:40%;">
-						<label>Type</label>
-						<md-select ng-model="parking.type" required="required" style="width:100%;">
-							<md-option value="Driveway">Driveway</md-option>
-							<md-option value="Garage">Garage</md-option>
-							<md-option value="Carpark">Car Park</md-option>
-						</md-select>
-					</md-input-container>
-					<md-input-container style=" width:40%;">
-						<label>Width</label>
-						<md-select ng-model="parking.width" required="required" style="width:100%;">
-							<md-option value="Normal">Normal</md-option>
-							<md-option value="Small">Small</md-option>
-						</md-select>
-					</md-input-container>
+						<md-input-container style=" width:40%;">
+							<label>Type</label>
+							<md-select ng-model="parking.type" required="required" style="width:100%;">
+								<md-option value="Driveway">Driveway</md-option>
+								<md-option value="Garage">Garage</md-option>
+								<md-option value="Carpark">Car Park</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container style=" width:40%;">
+							<label>Width</label>
+							<md-select ng-model="parking.width" required="required" style="width:100%;">
+								<md-option value="Normal">Normal</md-option>
+								<md-option value="Small">Small</md-option>
+							</md-select>
+						</md-input-container>
 					</div>
 				</md-card-content>
 			</md-card>

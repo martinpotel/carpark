@@ -45,7 +45,6 @@ router.get('/bookings', function(req,res) {
             if (diff > 5  && diff <= 10) values[2]++
             if (diff > 10  && diff <= 15) values[3]++
             if (diff > 15) values[4]++
-            console.log(diff);
             count++;
             cbResult(); 
         },function () {

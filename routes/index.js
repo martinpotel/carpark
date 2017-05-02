@@ -13,4 +13,5 @@ router.get('/', function(req, res) {
 	res.render('layout', {user: user, admin:admin, userInfos:req.user});
 });
 
+
 module.exports = router;

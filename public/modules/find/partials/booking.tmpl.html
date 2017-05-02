@@ -1,0 +1,39 @@
+<md-dialog ng-cloak style="width:70%;" >
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<md-button type='button' class="md-icon-button" ng-click="closeBookingBox()">
+					<i class="material-icons" >arrow_back</i>
+				</md-button>
+				<h2>Book Park</h2>
+				<span flex></span>
+				
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="max-height:810px;">
+			<div  layout="row" layout-align="center center">
+				<div>
+					<label>From</label>
+					<md-datepicker ng-model="booking.dates.start" md-placeholder="Enter date" ng-change="setPrice()"></md-datepicker>
+				</div>
+				<div>
+					<label style="margin-left: 30px;">To</label>
+		  			<md-datepicker ng-model="booking.dates.end" md-placeholder="Enter date" ng-change="setPrice()"></md-datepicker>
+		  		</div>
+	  		</div>
+	  		<div  layout="row" layout-align="center center">
+				<div>
+					<h3>{{price}} €</h3>
+				</div>
+	  		</div>
+	  		<div  layout="row" layout-align="center center" ng-if="message">
+				<div>
+					<p style="color:red">{{message}}</p>
+				</div>
+	  		</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="bookParking()" ng-disabled="message"> Book </md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
