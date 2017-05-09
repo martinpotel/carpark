@@ -12,6 +12,7 @@ router.post('/create/', function (req, res) {
     booking.tenant = req.user._id;
     booking.accepted = false;
     booking.declined = false;
+    booking.payed = false;
 
     db.collection('parking').findOne({_id: new ObjectId(req.body.booking.parking)}, function(err, parking) {
 		if(parking == null) res.send({'error': 'Not found'});
@@ -20,12 +21,29 @@ router.post('/create/', function (req, res) {
 				console.log('available:' + isAvailable);
 				if (isAvailable) {
 					db.collection('booking').save(booking, function(err, doc) {
-	        			res.send('ok');
+	        			res.send(booking);
 	   			 	});
 				}else{
 					res.send({'error':'parking not available'});
 				}
 				
+			});
+		}
+	});
+});
+
+
+router.get('/get/:id', function(req, res) {
+	var db = req.app.locals.db;
+	db.collection('booking').findOne({_id: new ObjectId(req.params.id)}, function(err, result) {
+		if(result == null) res.send({'error': 'Not found'});
+		else {
+			db.collection('parking').findOne({_id: new ObjectId(result.parking)}, function(err, parking) {
+				if(parking == null) res.send({'error': 'Not found'});
+				else {
+					result.parking = parking;
+					res.send(result);
+				}
 			});
 		}
 	});

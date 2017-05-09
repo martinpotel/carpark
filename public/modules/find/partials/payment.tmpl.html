@@ -1,0 +1,38 @@
+<md-dialog ng-cloak style="width:20%;" >
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>Payment</h2>
+			<span flex></span>			
+		</div>
+	</md-toolbar>
+	<md-dialog-content style="max-height:60%;">
+		<form name="ccForm" class="md-whiteframe-z2 small" layout='column' style="padding: 5%;">
+
+			<md-input-container flex='105' md-no-float>
+				<label>Card Number</label>
+    			<input type="text" class="form-control"  placeholder="Card Number" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number">	
+  				<md-icon  style="color:red;"   ng-show="!ccForm.ccNumber.$valid" aria-label="Icon" class="material-icons">clear</md-icon>
+  				<md-icon  style="color:green;" ng-show="ccForm.ccNumber.$valid" aria-label="Icon" class="material-icons">done</md-icon>
+  			</md-input-container>
+  			<md-input-container flex='105' md-no-float>
+				<label>CVC</label>
+				<input type="text" class="form-control" placeholder="CVC" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc">
+				<md-icon  style="color:green;" ng-show="ccForm.ccCvc.$valid" aria-label="Icon" class="material-icons">done</md-icon>
+  				<md-icon  style="color:red;"   ng-show="!ccForm.ccCvc.$valid" aria-label="Icon" class="material-icons">clear</md-icon>
+			</md-input-container>
+			<div layout="row">
+				<md-input-container flex='105' md-no-float>
+					<label>Expiration</label>
+					<input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">
+				</md-input-container>
+				<md-input-container flex='105' md-no-float>
+					<input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year">
+				</md-input-container>
+			</div>
+			<div layout="row" layout-align="center center">
+			    <md-button type='submit' class=" md-raised md-hue-1">Submit</md-button>
+			</div>
+		</form>
+		</md-dialog-content>
+</md-dialog>
+

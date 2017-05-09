@@ -6,6 +6,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var ObjectId = require('mongodb').ObjectID;
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
+//var mailService = require('../helpers/mail');
 var async = require('async');
 
 //register
@@ -88,10 +89,18 @@ router.get('/logs/:id', function(req, res) {
 
 
 router.post('/create-user/', function (req, res) {
+    
+    console.log('ok');
+
     var db = req.app.locals.db;
     req.body.newUser.admin = false;  
-    db.collection('users').save(req.body.newUser, function(err, tuto) {
-        res.send('ok');
+    req.body.newUser.wallet = 0;
+    db.collection('users').save(req.body.newUser, function(err, usr) {
+        console.log('ok');
+        mailService.prepareMail('C00221534@itcarlow.ie', 'welcome', db, function() {
+            res.send('ok');
+        });
+        
     });
 });
 

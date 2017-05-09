@@ -21,6 +21,21 @@ bookingModule.controller('BookingController', function($scope, $http, $location,
 		}
 	});
 
+	$scope.goToPayment = function (booking) {
+		if (!booking.payed) {
+			$location.path("/payment/"+booking._id);
+		}else{
+			$mdDialog.show(
+				$mdDialog.alert()
+					.title('')
+					.textContent('This reservation has already been paid.')
+					.ariaLabel('alert paid') 
+					.ok('OK')
+			);
+		}
+		
+	}
+
 	$scope.getInformations = function ($event,b) {
 		$scope.currBooking = b;
 

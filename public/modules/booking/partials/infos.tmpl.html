@@ -4,6 +4,10 @@
 			<div class="md-toolbar-tools">
 				<h2>Booking Informations</h2>
 				<span flex></span>
+				<span ng-if="ctrl.parent.currBooking.payed" layout="row">
+				<h2>Payed</h2>
+				<md-icon aria-label="Icon" class="material-icons">done</md-icon>
+				</span>
 			</div>
 		</md-toolbar>
 		<md-dialog-content style="min-width:800px;">
@@ -26,10 +30,9 @@
 				<md-list-item class="md-3-line">
 					<md-icon aria-label="Icon" class="material-icons">location_on</md-icon>
 					<div class="md-list-item-text">
+						<h4>{{ctrl.parent.currBooking.parking.address.streetNumber}} {{ ctrl.parent.currBooking.parking.address.street }}</h4>
 						<h3>{{ctrl.parent.currBooking.parking.address.city}}</h3>
 						<h4>{{ctrl.parent.currBooking.parking.address.country}}</h4>
-						<h7>{{ctrl.parent.currBooking.parking.dates.start}}</h7>
-						<h7>{{ctrl.parent.currBooking.parking.dates.start}}</h7>
 					</div>
 				</md-list-item>
 				<md-divider></md-divider>
@@ -44,7 +47,7 @@
 				<md-list-item class="md-3-line">
 					<md-icon aria-label="Icon" class="material-icons">euro_symbol</md-icon>
 					<div class="md-list-item-text">
-						<h3>{{ctrl.parent.currBooking.parking.price}} €</h3>
+						<h3>{{ctrl.parent.currBooking.price}} €</h3>
 					</div>
 				</md-list-item>
 				<md-divider></md-divider>

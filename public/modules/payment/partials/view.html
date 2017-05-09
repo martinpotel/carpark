@@ -1,0 +1,84 @@
+<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h1>Payment</h1>
+	</div>
+	<span flex=""></span>
+</md-toolbar>
+
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div style="display:block; margin-top:15px;">
+			<div class="infoBox" layout='row' layout-align="center center">
+				<md-icon>info</md-icon>
+				<div flex style="text-align: center">
+					Payment
+				</div>
+			</div>
+		</div>
+		<div layout="row">
+	  		<div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+					<md-card-content>
+						<h2 class="md-title" style="color:#333;">Booking Informations</h2>
+						<h3>Adress:</h3>
+							{{booking.parking.address.streetNumber}}, {{booking.parking.address.street}}, {{booking.parking.address.city}}
+						<h3>Dates:</h3>
+							<p> From {{booking.dates.start | date:'d/M/yy'}}</p>
+							<p> To {{booking.dates.end | date:'d/M/yy'}}</p>
+						<h3>Price:</h3>
+							<p> {{booking.price}} €</p>
+						<h3>Type:</h3>
+							<p>{{booking.parking.type}}</p>
+							<p>{{booking.parking.width}}</p>
+					</md-card-content>
+				</md-card>
+			</div>
+			<div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+						<form name="ccForm" class="md-whiteframe-z2 small" layout='column' style="padding: 5%;">
+							<h2 class="md-title" style="color:#333;">Card Informations</h2>
+							<div layout="row">
+								<md-input-container flex='105' md-no-float>
+									<label>Cardholder Name</label>
+									<input type="text" class="form-control" placeholder="Fistname" id="cardFirsName" name="cardFirsName" ng-model="card.firstname" required>
+									<md-icon  style="color:green;" ng-show="ccForm.cardFirsName.$valid && ccForm.cardLastName.$valid" aria-label="Icon" class="material-icons">done</md-icon>	
+									<md-icon ng-show="!ccForm.cardFirsName.$valid || !ccForm.cardLastName.$valid" aria-label="Icon" class="material-icons">person</md-icon>	
+								</md-input-container>
+								<md-input-container flex='105' md-no-float>
+									<input type="text" class="form-control" placeholder="Lastname" id="cardLastName" name="cardLastName" ng-model="card.lastname" required>
+								</md-input-container>
+							</div>
+							<md-input-container flex='60' md-no-float>
+								<label>Card Number</label>
+								<input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number" required>	
+									<md-icon    ng-show="!ccForm.ccNumber.$valid" aria-label="Icon" class="material-icons">credit_card</md-icon>
+									<md-icon  style="color:green;" ng-show="ccForm.ccNumber.$valid" aria-label="Icon" class="material-icons">done</md-icon>
+							</md-input-container>
+							<md-input-container flex='50' md-no-float>
+								<label>CVC</label>
+								<input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc" required>
+								<md-icon  style="color:green;" ng-show="ccForm.ccCvc.$valid" aria-label="Icon" class="material-icons">done</md-icon>
+									<md-icon  ng-show="!ccForm.ccCvc.$valid" aria-label="Icon" class="material-icons">fiber_pin</md-icon>
+							</md-input-container>
+							<div layout="row">
+								<md-input-container flex='50' md-no-float>
+									<label>Expiration</label>
+									<input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month" required>
+									<md-icon  ng-show="ccForm.ccExpMonth.$error && ccForm.ccExpYear.$error" aria-label="Icon" class="material-icons">date_range</md-icon>	
+								</md-input-container>
+								<md-input-container flex='50' md-no-float>
+									<input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year" required>
+								</md-input-container>
+							</div>
+						</form>
+				 </md-card>
+			</div>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center">
+			<md-button class="md-raised md-primary" ng-disabled="!ccForm.ccNumber.$valid || !ccForm.ccCvc.$valid" ng-click="processPayment()">Process Payment</md-button>
+		</div>
+	</md-content>	  		
+</div>

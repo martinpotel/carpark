@@ -1,4 +1,4 @@
-var rgeApp = angular.module('rgeApp', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial', 'homeModule', 'noteModule', 'loginModule', 'registerModule', 'rentModule', 'profileModule', 'parkingModule', 'messageModule', 'bookingModule', 'adminModule', 'reservationModule', 'findModule']);
+var rgeApp = angular.module('rgeApp', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial', 'homeModule', 'noteModule', 'loginModule', 'registerModule', 'rentModule', 'profileModule', 'parkingModule', 'messageModule', 'bookingModule', 'adminModule', 'reservationModule', 'findModule', 'paymentModule']);
 
 /* Angular material theme */
 rgeApp.config(function($mdThemingProvider) {

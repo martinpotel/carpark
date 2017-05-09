@@ -1,0 +1,25 @@
+<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h1>Payment</h1>
+	</div>
+	<span flex=""></span>
+</md-toolbar>
+
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+  		<div flex-xs flex-gt-xs="50" layout="row" layout-align="center center">
+			<md-card>
+				<md-card-content>
+					<img src="/public/images/payment_done.png" class="md-card-image">
+					<h2 class="md-title" style="color:#333;text-align: center">Payment accepted</h2>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="row" layout-align="center center">
+			<md-button class="md-raised md-primary" href="#/bookings">OK</md-button>
+		</div>
+	</md-content>	  		
+</div>

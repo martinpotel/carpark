@@ -2,7 +2,7 @@
 	Home page display
 */
 
-var findModule = angular.module('findModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete', 'ngMap']);
+var findModule = angular.module('findModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete', 'ngMap', 'credit-cards']);
 
 /* Routing */
 findModule.config(['$routeProvider', function($routeProvider) {
@@ -110,7 +110,7 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 						owner:owner,
 						p:p,
 						owner:owner
-				});
+					});
 			}); 
 	    }
 
@@ -174,7 +174,21 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 			});
 		};
 
-		$scope.bookParking = function () {
+
+		/*
+
+						$mdDialog.hide();
+						$location.path('/bookings');
+						$mdToast.show($mdToast.simple()
+							.content("Park booked")
+							.position('top right')
+							.hideDelay(3000)
+						);
+
+
+		*/
+
+		$scope.bookParking = function (ev) {
 			if ($scope.booking.dates.start < new Date()) {
 				$scope.message = 'Please select a valid date';
 			}else if ($scope.booking.dates.start > $scope.booking.dates.end) {
@@ -185,13 +199,27 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 					if (data.error) {
 						$scope.message = 'Parking not available for theses dates.';
 					}else {
-						$mdDialog.hide();
-						$location.path('/bookings');
-						$mdToast.show($mdToast.simple()
-							.content("Park booked")
-							.position('top right')
-							.hideDelay(3000)
-						);
+						$scope.booking = data;
+						var confirm = $mdDialog.confirm()
+          					.title('Payment')
+          					.textContent('Do you want to pay by online by card or by cash to the owner?')
+          					.ariaLabel('Payment')
+          					.targetEvent(ev)
+          					.ok('Pay Online')
+          					.cancel('Pay by Cash');
+
+						$mdDialog.show(confirm).then(function() {
+							console.log($scope.booking);
+							$location.path("/payment/"+$scope.booking._id);
+						}, function() {
+  							$mdDialog.hide();
+							$location.path('/bookings');
+							$mdToast.show($mdToast.simple()
+								.content("Park booked")
+								.position('top right')
+								.hideDelay(3000)
+							);
+						});
 					}
 					
 				});
@@ -207,10 +235,10 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 			}else {
 				$scope.message = null;
 			}
-
-
 			$scope.price = dateDiff($scope.booking.dates.start, $scope.booking.dates.end) * $scope.p.price;
 			if ($scope.price < 0) $scope.price = 0;
+
+			$scope.booking.price = $scope.price;
 
 		} 
 
@@ -220,13 +248,10 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 		 
 		    tmp = Math.floor(tmp/1000);            
 		    diff.sec = tmp % 60;                   
-		 
 		    tmp = Math.floor((tmp-diff.sec)/60);   
 		    diff.min = tmp % 60;                   
-		 
 		    tmp = Math.floor((tmp-diff.min)/60);    
 		    diff.hour = tmp % 24;                   
-		     
 		    tmp = Math.floor((tmp-diff.hour)/24);  
 		    diff.day = tmp;
 		    
@@ -234,8 +259,6 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 		    return diff.day +1;
 		}
 	}
-
-
 
 }]);
 
