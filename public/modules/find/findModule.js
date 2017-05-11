@@ -42,6 +42,23 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 		});	
 	});	
 
+	$scope.searchParking = function() {
+		console.log($scope.dateStart);
+		console.log($scope.dateEnd);
+
+		var dates = {start:$scope.dateStart, end:$scope.dateEnd }
+
+		$http.post('/parking/by-dates', dates).success(function(parks) {
+			
+			console.log(parks);
+			$scope.parkings = parks;
+			$scope.parkSelected = $scope.parkings[0];
+			$scope.map.lat = $scope.parkSelected.address.location.lat;
+			$scope.map.long = $scope.parkSelected.address.location.long;
+		});	
+
+	}
+
 	$scope.selectPark = function (p) {
 		$scope.parkSelected = p;
 		$scope.map.lat = $scope.parkSelected.address.location.lat;
@@ -119,11 +136,13 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 	function MessageController($scope, $mdDialog, $mdToast, owner, p) {
 		$scope.owner = owner;
 		$scope.p = p;
+		$scope.process = false;
 
 		$scope.message = {to:$scope.owner._id, parking:p._id};
 		
 
 		$scope.sendMessage = function () {
+			$scope.process = true;
 			$http.post('/message/send/', {message:$scope.message}).
 			success(function(data, status, headers, config) {
 				$mdDialog.hide();
@@ -152,6 +171,7 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 	function BookingController($scope, $mdDialog, $mdToast, $location,  p, owner) {
 
 		$scope.message = null;
+		$scope.process = false;
 
 		$scope.p = p;
 		$scope.owner = owner;
@@ -174,31 +194,20 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 			});
 		};
 
-
-		/*
-
-						$mdDialog.hide();
-						$location.path('/bookings');
-						$mdToast.show($mdToast.simple()
-							.content("Park booked")
-							.position('top right')
-							.hideDelay(3000)
-						);
-
-
-		*/
-
 		$scope.bookParking = function (ev) {
 			if ($scope.booking.dates.start < new Date()) {
 				$scope.message = 'Please select a valid date';
 			}else if ($scope.booking.dates.start > $scope.booking.dates.end) {
 				$scope.message = 'Please select a valid date';
 			}else {
+				$scope.process = true;
 				$http.post('/booking/create/', {booking:$scope.booking}).
 				success(function(data, status, headers, config) {
 					if (data.error) {
 						$scope.message = 'Parking not available for theses dates.';
+						$scope.process = false;
 					}else {
+
 						$scope.booking = data;
 						var confirm = $mdDialog.confirm()
           					.title('Payment')
@@ -209,7 +218,6 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
           					.cancel('Pay by Cash');
 
 						$mdDialog.show(confirm).then(function() {
-							console.log($scope.booking);
 							$location.path("/payment/"+$scope.booking._id);
 						}, function() {
   							$mdDialog.hide();

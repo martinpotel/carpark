@@ -3,21 +3,22 @@ var nodemailer = require('nodemailer');
 
 
 exports.prepareMail = function ( to, nameMail, db, callback) {
-	console.log("ok");
 
-	db.collection('mail').findOne( {route : nameMail }, function(err, mail) {
+    console.log('mailtosend:',to);
+
+	db.collection('mail').findOne( {name : nameMail }, function(err, mail) {
 		var transporter = nodemailer.createTransport({
-    			service: 'gmail',
+    			service: 'Mailgun',
     			auth: {
-       				user: 'mrtn.potel@gmail.com',
-        			pass: 'ANZMBS5457'
+       				user: 'postmaster@sandbox85afa0ca87df4bd79f3b2a02aa2c5541.mailgun.org',
+        			pass: '73dfde49f9af54469242603cf639990e'
     			}
     		});
 
 
 		var mailOptions = {
-    		from: '"Fred Foo 👻" <foo@blurdybloop.com>', 
-   			to: to,
+    		from: 'mrtn.potel@gmail.com', 
+   			to: 'mrtn.potel@gmail.com',
    			subject: mail.subject,
     		text: mail.contenttext,
     		html: mail.contenthtml
@@ -25,9 +26,12 @@ exports.prepareMail = function ( to, nameMail, db, callback) {
 
 		transporter.sendMail(mailOptions, function (error, info){
     		if (error) {
-        		return console.log(error);
-    		}
-    		console.log('Message %s sent: %s', info.messageId, info.response);
+                console.log('Mail not sent');
+                console.log(error)
+    		}else{
+                console.log('Message sent:', mailOptions);
+            }
+    		callback('ok');
 		});
 	});
 }

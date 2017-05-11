@@ -33,7 +33,8 @@
 	  		</div>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
-			<md-button ng-click="bookParking($event)" ng-disabled="message"> Book </md-button>
+			<md-button ng-click="bookParking($event)" ng-disabled="message" ng-if="!process"> Book </md-button>
+			<md-progress-circular md-mode="indeterminate" ng-if="process"></md-progress-circular>
 		</md-dialog-actions>
 	</form>
 </md-dialog>

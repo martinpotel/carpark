@@ -3,7 +3,7 @@
 		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h1>Register</h1>
+		<h1>Sign Up</h1>
 	</div>
 	<span flex=""></span>
 </md-toolbar>
@@ -13,7 +13,6 @@
 			<div id="mainLoginFormContainer" >
 				<form id="mainRegisterForm" name="mainLoginForm" class="md-whiteframe-z2 small" layout='column' ng-submit="submitForm(mainRegisterForm.$valid)" style="padding: 50px">
 					
-
 
 					<md-input-container flex='105' >
 						<md-radio-group ng-model="newUser.gender" layout="row" layout-align="center center">
@@ -65,6 +64,7 @@
 				    <div layout="row" layout-align="center center">
 				    	<md-button ng-disabled="!mainLoginForm.$valid && newUser.password===newUser.passwordConfirm" type='submit' class=" md-raised md-hue-1">Submit</md-button>
 					</div>
+					<a href="#/login" name="register" style='text-align: center;'>Login</a>
 				</form>
 			<div>
 	</md-content>

@@ -1,0 +1,71 @@
+<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+			<md-icon>arrow_back</md-icon>
+		</md-button>
+		<h1>My Wallet</h1>
+	</div>
+	<span flex=""></span>
+</md-toolbar>
+
+<div layout="column" layout-fill>	
+	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div style="display:block; margin-top:15px;">
+			<div class="infoBox" layout='row' layout-align="center center">
+				<md-icon>info</md-icon>
+				<div flex style="text-align: center">
+					My Wallet
+				</div>
+			</div>
+		</div>
+		<div layout="row">
+	  		<div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+					<md-card-content>
+						<h2 class="md-title" style="color:#333;">Profile</h2>
+						<h3>Informations:</h3>
+							<p>{{user.firstname}} {{user.lastname}}</p>
+						<h3>Contact:</h3>
+							<p>{{user.mail}}</p>
+							<p>{{user.phone}}</p>
+					</md-card-content>
+				</md-card>
+			</div>
+			<div flex-xs flex-gt-xs="50" layout="column">
+				<md-card>
+					<md-card-content>
+						<h2 class="md-title" style="color:#333;">My Wallet Balance</h2>
+						<h1 style="text-align: center;font-size: 45px"> {{user.wallet}} €</h1>
+					</md-card-content>
+				</md-card>
+			</div>
+		</div>
+		<div layout="row">
+	  		<div flex-xs flex-gt-xs="100" layout="column">
+				<md-card>
+					<md-card-content>
+						<h2 class="md-title" style="color:#333;text-align: center;">My Bank informations</h2>
+						<h3>Account owner:</h3>
+							<md-input-container class="md-block" flex-gt-sm>
+          						<label>Name</label>
+          						<input name="iban" ng-model="bank.name" />
+        					</md-input-container>
+						<h3>Bank Informations:</h3>
+							<md-input-container class="md-block" flex-gt-sm>
+          						<label>IBAN</label>
+          						<input name="iban" ng-model="bank.iban" />
+        					</md-input-container>
+        					<md-input-container class="md-block" flex-gt-sm>
+          						<label>SWIFT</label>
+          						<input name="swift" ng-model="bank.swift" />
+        					</md-input-container>
+					</md-card-content>
+				</md-card>
+				
+			</div>
+		</div>
+		<div  layout="column" layout-align="center center">				
+			<md-button class="md-raised md-primary" ng-disabled="" ng-click="processPayment()">Transfer Money</md-button>
+		</div>
+	</md-content>	  		
+</div>

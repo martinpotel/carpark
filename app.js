@@ -32,6 +32,8 @@ try {
     process.exit(1);
 }
 
+
+
 /* View engine (ejs) setup */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -61,9 +63,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 //Paypal api
-app.post('/create', routes.create);
-app.get('/execute', routes.execute);
-app.get('/cancel', routes.cancel);
+payment.init(config);
+
 
 /* Instantiate routes */
 app.use('/', routes);

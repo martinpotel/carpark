@@ -5,8 +5,10 @@
 				<h2>Booking Informations</h2>
 				<span flex></span>
 				<span ng-if="ctrl.parent.currBooking.payed" layout="row">
-				<h2>Payed</h2>
-				<md-icon aria-label="Icon" class="material-icons">done</md-icon>
+				PAYED
+				</span>
+				<span ng-if="!ctrl.parent.currBooking.payed" layout="row" class="md-accent">
+				NOT PAYED
 				</span>
 			</div>
 		</md-toolbar>

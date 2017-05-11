@@ -1,7 +1,11 @@
 <md-toolbar layout="row" class="md-whiteframe-3dp">
 	<div class="md-toolbar-tools">
 		<main-menu-button></main-menu-button>
-		<h1>CarParking</h1>
+		<md-icon>explore</md-icon>
+		<h1>CarParking</h1> 
+		<span flex></span>
+		<md-button ng-if="!user" ng-href="#/login" class="md-raised md-accent">Login</md-button>
+		<md-button ng-if="!user" ng-href="#/register" class="md-raised md-accent">Sign Up</md-button>
 	</div>
 </md-toolbar>
 
@@ -44,33 +48,33 @@
 				</md-card-content>
 			</md-card>
 		</div>
-		<div layout-wrap layout="row" layout-align="center start" class="homeDisplay">
-			<a ng-href="#/rent" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
-				<md-card flex>
-				 	<img src="/public/images/home_add.png" class="md-card-image">
-				 	<md-card-content>
-				 		<h2 class="md-title" style="text-align: center">Rent</h2>
-				 	</md-card-content>
-				</md-card>
-			</a>
+			<div layout-wrap layout="row" layout-align="center start" class="homeDisplay">
+				<a ng-href="#/rent" >
+					<md-card flex>
+					 	<img src="/public/images/home_add.png" class="md-card-image">
+					 	<md-card-content>
+					 		<h2 class="md-title" style="text-align: center">Rent</h2>
+					 	</md-card-content>
+					</md-card>
+				</a>
 
-			<a ng-href="#/find" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
-				<md-card flex>
-				 	<img src="/public/images/home_find.png" class="md-card-image">
-				 	<md-card-content>
-				 		<h2 class="md-title" style="text-align: center">Find</h2>
-				 	</md-card-content>
-				</md-card>
-			</a>
-			<a ng-href="#/profile" flex="20" flex-sm="45" flex-xs="100" flex-md="45">
-				<md-card flex>
-				 	<img src="/public/images/home_edit.png" class="md-card-image">
-				 	<md-card-content>
-				 		<h2 class="md-title" style="text-align: center">Profile</h2>
-				 	</md-card-content>
-				</md-card>
-			</a>
-		</div>
+				<a ng-href="#/find">
+					<md-card flex>
+					 	<img src="/public/images/home_find.png" class="md-card-image">
+					 	<md-card-content>
+					 		<h2 class="md-title" style="text-align: center">Find</h2>
+					 	</md-card-content>
+					</md-card>
+				</a>
+				<a ng-href="#/profile">
+					<md-card flex>
+					 	<img src="/public/images/home_edit.png" class="md-card-image">
+					 	<md-card-content>
+					 		<h2 class="md-title" style="text-align: center">Profile</h2>
+					 	</md-card-content>
+					</md-card>
+				</a>
+			</div>
 	</div>
 	</md-content>
 </div>

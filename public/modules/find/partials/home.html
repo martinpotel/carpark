@@ -3,7 +3,7 @@
 		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h1>Find a car park</h1>
+		<h1>Find a Parking</h1> 
 	</div>
 	<span flex=""></span>
 </md-toolbar>
@@ -34,7 +34,7 @@
 			  			<md-datepicker ng-model="dateStart" md-placeholder="Enter date"></md-datepicker>
 			  			<md-datepicker ng-model="dateEnd" md-placeholder="Enter date"></md-datepicker>
 			  			<md-button ng-click="centerMap()" class="md-fab">
-							<md-icon aria-label="Icon" class="material-icons">search</md-icon>
+							<md-icon aria-label="Icon" class="material-icons" ng-click="searchParking()">search</md-icon>
 						</md-button>
 					</div>
 				</md-card-content>

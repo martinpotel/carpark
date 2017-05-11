@@ -1,6 +1,6 @@
 <md-toolbar layout="row" class="fade md-whiteframe-3dp">
 	<div class="md-toolbar-tools">
-		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
+		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/bookings">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
 		<h1>Payment</h1>
@@ -77,8 +77,11 @@
 				 </md-card>
 			</div>
 		</div>
-		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center">
+		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-if="!process">
 			<md-button class="md-raised md-primary" ng-disabled="!ccForm.ccNumber.$valid || !ccForm.ccCvc.$valid" ng-click="processPayment()">Process Payment</md-button>
 		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-if="process">
+      		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    	</div>
 	</md-content>	  		
 </div>

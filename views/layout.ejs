@@ -40,7 +40,6 @@
 
 		<script type="text/javascript" src="/modules/home/homeModule.js"></script>
 		<script type="text/javascript" src="/modules/find/findModule.js"></script>
-		<script type="text/javascript" src="/modules/notes/noteModule.js"></script>
 		<script type="text/javascript" src="/modules/login/loginModule.js"></script>
 		<script type="text/javascript" src="/modules/register/registerModule.js"></script>
 		<script type="text/javascript" src="/modules/rent/rentModule.js"></script>
@@ -50,6 +49,7 @@
 		<script type="text/javascript" src="/modules/booking/bookingModule.js"></script>
 		<script type="text/javascript" src="/modules/reservation/reservationModule.js"></script>
 		<script type="text/javascript" src="/modules/payment/paymentModule.js"></script>
+		<script type="text/javascript" src="/modules/wallet/walletModule.js"></script>
 		<script type="text/javascript" src="/app.js"></script>
 	</head>
 
@@ -70,34 +70,31 @@
 				</md-list-item>
 				<% if(user) { %>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">
-					Rent your car park</span></a>
-				</md-list-item>
-				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/messages" class="md-list-item-text"><i class="material-icons md-avatar-icon">mail</i> <span class="mainMenuTextItem">Messages</span></a>
-				</md-list-item>
-				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/profile" class="md-list-item-text"><i class="material-icons md-avatar-icon">person</i> <span class="mainMenuTextItem">
 					Profile</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/wallet" class="md-list-item-text"><i class="material-icons md-avatar-icon">account_balance_wallet</i> <span class="mainMenuTextItem">
+					My Wallet</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/bookings" class="md-list-item-text"><i class="material-icons md-avatar-icon">library_books</i> <span class="mainMenuTextItem">My Bookings</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/reservations" class="md-list-item-text"><i class="material-icons md-avatar-icon">library_books</i> <span class="mainMenuTextItem">Reservations</span></a>
+					<a href="#/messages" class="md-list-item-text"><i class="material-icons md-avatar-icon">mail</i> <span class="mainMenuTextItem">Messages</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/rent" class="md-list-item-text"><i class="material-icons md-avatar-icon">add</i> <span class="mainMenuTextItem">
+					Rent your car park</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="#/parkings" class="md-list-item-text"><i class="material-icons md-avatar-icon">local_parking</i> <span class="mainMenuTextItem">My Parkings</span></a>
 				</md-list-item>
 				<md-list-item md-ink-ripple class="md-clickable">
+					<a href="#/reservations" class="md-list-item-text"><i class="material-icons md-avatar-icon">library_books</i> <span class="mainMenuTextItem">Reservations</span></a>
+				</md-list-item>
+				<md-list-item md-ink-ripple class="md-clickable">
 					<a href="/user/Logout" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Logout</span></a>
-				</md-list-item>
-				<% }else{ %>
-				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/login" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Login </span></a>
-				</md-list-item>
-				<md-list-item md-ink-ripple class="md-clickable">
-					<a href="#/register" class="md-list-item-text"><i class="material-icons md-avatar-icon">view_week</i> <span class="mainMenuTextItem">Register</span></a>
 				</md-list-item>
 				<% } if(admin) { %>
 				<md-list-item md-ink-ripple class="md-clickable">

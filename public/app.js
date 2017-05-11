@@ -1,7 +1,27 @@
-var rgeApp = angular.module('rgeApp', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial', 'homeModule', 'noteModule', 'loginModule', 'registerModule', 'rentModule', 'profileModule', 'parkingModule', 'messageModule', 'bookingModule', 'adminModule', 'reservationModule', 'findModule', 'paymentModule']);
+var carparkApp = angular.module('rgeApp', 
+	[
+		'ngRoute', 
+		'ngSanitize',
+		'ngCookies', 
+		'ngMaterial', 
+		'homeModule', 
+		'loginModule', 
+		'registerModule', 
+		'rentModule', 
+		'profileModule', 
+		'parkingModule', 
+		'messageModule', 
+		'bookingModule', 
+		'adminModule', 
+		'reservationModule', 
+		'findModule', 
+		'paymentModule', 
+		'walletModule'
+	]
+);
 
 /* Angular material theme */
-rgeApp.config(function($mdThemingProvider) {
+carparkApp.config(function($mdThemingProvider) {
 	$mdThemingProvider
 		.theme('forest')
 		.primaryPalette('lime')
@@ -11,14 +31,14 @@ rgeApp.config(function($mdThemingProvider) {
 /*
 	Route not found redirects to home
 */
-rgeApp.config(['$routeProvider', function($routeProvider) {
+carparkApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.otherwise({
 	    	redirectTo: '/'
 	    });
 }]);
 
-rgeApp.config(['$httpProvider', function($httpProvider) {
+carparkApp.config(['$httpProvider', function($httpProvider) {
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};    
     }
@@ -28,7 +48,7 @@ rgeApp.config(['$httpProvider', function($httpProvider) {
 }]);
 
 
-rgeApp.directive('mainMenuButton', function($mdSidenav) {
+carparkApp.directive('mainMenuButton', function($mdSidenav) {
 	return {
 	  	link: function(scope, elem, attr) {
 			scope.openMainMenu = function() {
@@ -40,7 +60,7 @@ rgeApp.directive('mainMenuButton', function($mdSidenav) {
 });
 
 
-rgeApp.run(function($rootScope, $timeout, $mdSidenav, $window, $location) {
+carparkApp.run(function($rootScope, $timeout, $mdSidenav, $window, $location) {
 	if(typeof $window.ga === 'function') {
 		$window.ga('create', 'UA-68067706-1', 'auto');
 

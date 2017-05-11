@@ -57,7 +57,7 @@ reservationModule.controller('ReservationController', function($scope, $http, $l
 					.hideDelay(3000));
 			});
 		}, function() {
-			$location.path("/messages");
+			$location.path("/reservations");
 		});
 	}
 
@@ -87,7 +87,7 @@ reservationModule.controller('ReservationController', function($scope, $http, $l
 					.hideDelay(3000));
 			});
 		}, function() {
-			$location.path("/messages");
+			$location.path("/reservations");
 		});
 	}
 

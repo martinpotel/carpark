@@ -27,21 +27,22 @@
 								<div class="md-list-item-text" layout="column">
 									<h3>{{b.parking.address.street}}, {{b.parking.address.city}}</h3>
 									<h4>From <b>{{b.dates.start | date:'d/M/yy' }}</b> to <b>{{ b.dates.end | date:'d/M/yy'}}</b></h4>
-									<h4 ng-if="b.accepted" style="color:green">Accepted</h4>
-									<h4 ng-if="!b.accepted && !b.declined" style="color:grey">Waiting</h4>
-									<h4 ng-if="b.declined" style="color:red">Declined</h4>
+									<h4 ng-if="b.status==='accepted'" style="color:green">Accepted</h4>
+									<h4 ng-if="b.status==='waiting'" style="color:grey">Waiting</h4>
+									<h4 ng-if="b.status==='declined'" style="color:red">Declined</h4>
+									<h4 ng-if="b.status==='canceled'" style="color:red">Canceled</h4>
 								</div>
 								
 								<div>
-									<md-button ng-href="" class="md-icon-button" ng-click="acceptReservation($event,b)">
+									<md-button ng-if="b.status==='waiting'" ng-href="" class="md-icon-button" ng-click="acceptReservation($event,b)">
 										<md-tooltip md-direction="top">Accept reservation</md-tooltip>
 										<md-icon aria-label="Icon" class="material-icons">done</md-icon>	
 									</md-button>
-									<md-button ng-href="" class="md-icon-button" ng-click="declineReservation($event, b)">
+									<md-button ng-if="b.status==='waiting'" ng-href="" class="md-icon-button" ng-click="declineReservation($event, b)">
 										<md-tooltip md-direction="top">Decline Reservation</md-tooltip>
 										<md-icon aria-label="Icon" class="material-icons">cancel</md-icon>	
 									</md-button>
-									<md-button ng-href="" class="md-icon-button" ng-click="getInformations($event,b)">
+									<md-button  ng-href="" class="md-icon-button" ng-click="getInformations($event,b)">
 										<md-tooltip md-direction="top">Informations</md-tooltip>
 										<md-icon aria-label="Icon" class="material-icons">info</md-icon>	
 									</md-button>

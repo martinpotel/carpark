@@ -11,7 +11,7 @@
 			</div>
 		</md-toolbar>
 		<md-dialog-content style="max-height:60%;">
-			<div class="md-dialog-content">
+			<div class="md-dialog-content" >
 				<md-content class="md-padding">
 					<div layout="row" layout-align="center center">
 						<md-input-container flex="80" class="md-icon-float">
@@ -31,9 +31,12 @@
 							<textarea ng-model="message.content" name="textcontent" columns="1" rows="7" required></textarea>
 						</md-input-container>
 					</div>
-					<div style="text-align:center">
+					<div style="text-align:center" ng-if="!process">
 						<md-button type='button' class="md-accent md-raised md-hue-1" ng-click="sendMessage()">Send</md-button>
 					</div>
+					<div ng-if="process" layout="colomn" layout-align="center center" >
+      					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    				</div>
 				</md-content>
 			</div>
 		</md-dialog-content>

@@ -36,6 +36,36 @@ bookingModule.controller('BookingController', function($scope, $http, $location,
 		
 	}
 
+	$scope.cancelBooking = function (ev, b) {
+		var confirm = $mdDialog.confirm()
+			.title('Cancel this booking ?')
+			.textContent('Are you sure that you want to cancel this booking ?')
+			.ariaLabel("Confirm")
+			.targetEvent(ev)
+			.ok('Yes')
+			.cancel('No');
+		$mdDialog.show(confirm).then(function() {
+			$http.get('/booking/cancel/'+b._id).
+			success(function(data) {
+				$mdToast.show(
+					$mdToast.simple()
+					.content('Bookking canceled.')
+					.position('top right')
+					.hideDelay(3000));
+				b.declined = true;
+				b.accepted = false;
+			}).
+			error(function(data, status, headers, config) {
+				$mdToast.show($mdToast.simple()
+					.content('Error')
+					.position('top right')
+					.hideDelay(3000));
+			});
+		}, function() {
+			$location.path("/bookings");
+		});
+	}
+
 	$scope.getInformations = function ($event,b) {
 		$scope.currBooking = b;
 

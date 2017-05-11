@@ -23,7 +23,8 @@ homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', '$locati
 	$http.get('/user/logged-user/').success(function(usr){
 		$http.get('/parking/all').success(function(parks) {
 			$scope.parkings = parks;
-			$scope.user = usr;
+			if (typeof usr !== 'undefined' && usr !== 'undefined')$scope.user = usr;
+			else $scope.user = null;
 			$http.get('/message/not-read/').success(function(message){
 				$scope.countMsg = message.count;
 				$http.get('/booking/not-confirmed/').success(function(booking){

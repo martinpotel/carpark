@@ -6,7 +6,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var ObjectId = require('mongodb').ObjectID;
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
-//var mailService = require('../helpers/mail');
+var mailService = require('../helpers/mail');
 var async = require('async');
 
 //register

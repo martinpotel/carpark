@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var path = require('path');
 var ObjectId = require('mongodb').ObjectID;
+var mailService = require('../helpers/mail');
 
 router.post('/send/', function (req, res) {
     var db = req.app.locals.db;
@@ -13,7 +14,11 @@ router.post('/send/', function (req, res) {
     console.log(message);
 
     db.collection('message').save(message, function(err, doc) {
-        res.send('ok');
+    	db.collection('users').findOne({_id: new ObjectId(message.to)}, function(err, user) {
+			mailService.prepareMail(user.mail, 'message', db, function() {
+				res.send('ok');
+			});
+		});    
     });
 });
 
