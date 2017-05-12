@@ -25,6 +25,10 @@
 			    	<md-button type='submit' class=" md-raised md-hue-1">Login</md-button>
 				</div>
 				<a href="#/register" name="register" style='text-align: center;'>Create account</a>
+
+				<div ng-if="error" layout="row" layout-align="center center">
+			    	<p style="color:red">There was a problem with your login.</p>
+				</div>
 			</form>
 		</div>
 	</div>

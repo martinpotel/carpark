@@ -6,6 +6,10 @@ loginModule.config(['$routeProvider', function($routeProvider) {
 		.when('/login', {
 			templateUrl: 'modules/login/partials/form.html',
 			controller: 'LoginController'
+		})
+		.when('/login/error/', {
+			templateUrl: 'modules/login/partials/form.html',
+			controller: 'LoginControllerError'
 		});
 }]);
 
@@ -13,6 +17,11 @@ loginModule.config(['$routeProvider', function($routeProvider) {
 	Displays home page and username
 */
 loginModule.controller('LoginController', ['$scope', function($scope) {
+	$scope.error = false;
+}]);
 
+loginModule.controller('LoginControllerError', ['$scope', function($scope) {
+
+	$scope.error = true;
 
 }]);

@@ -8,6 +8,7 @@ var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy;
 var mailService = require('../helpers/mail');
 var async = require('async');
+var hashpassword = require('password-hash');
 
 //register
 router.post('/user-check-info/', function(req, res) {
@@ -37,12 +38,10 @@ passport.use(new LocalStrategy({passReqToCallback: true},
             if (!result) {
                 return done(null, false);
             }
-            else if(password !== result.password) {
+            else if(!hashpassword.verify( password, result.password)) {
                 return done(null, false);
             }
             else {
-                delete result.defaultmailcustomer;
-                delete result.defaultobjectcustomer; //TODO
                 var logsCollection = db.collection('userlogs');
                 logsCollection.save({'date':new Date(), 'user_id':result._id.toString()}, function (err, doc) {
                     return done(null, result);
@@ -93,6 +92,9 @@ router.post('/create-user/', function (req, res) {
     console.log('ok');
 
     var db = req.app.locals.db;
+    req.body.newUser.password = hashpassword.generate(req.body.newUser.password);
+   // console.log(hashpassword.verify( req.body.newUser.passwordConfirm, req.body.newUser.password));
+    delete req.body.newUser.passwordConfirm;
     req.body.newUser.admin = false;  
     req.body.newUser.wallet = 0;
     db.collection('users').save(req.body.newUser, function(err, usr) {
@@ -107,7 +109,7 @@ router.post('/create-user/', function (req, res) {
 
 router.post('/Login', passport.authenticate('local', { 
     successRedirect: '/',
-    failureRedirect: '/#/login',
+    failureRedirect: '/#/login/error',
     failureFlash: true
 }));
 
