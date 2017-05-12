@@ -47,8 +47,7 @@ reservationModule.controller('ReservationController', function($scope, $http, $l
 					.content('Reservation accepted.')
 					.position('top right')
 					.hideDelay(3000));
-				b.declined = false;
-				b.accepted = true;
+				b.status = 'accepted';
 			}).
 			error(function(data, status, headers, config) {
 				$mdToast.show($mdToast.simple()
@@ -77,8 +76,7 @@ reservationModule.controller('ReservationController', function($scope, $http, $l
 					.content('Reservation declined.')
 					.position('top right')
 					.hideDelay(3000));
-				b.declined = true;
-				b.accepted = false;
+				b.status = 'declined';
 			}).
 			error(function(data, status, headers, config) {
 				$mdToast.show($mdToast.simple()

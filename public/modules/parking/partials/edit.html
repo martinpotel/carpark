@@ -3,7 +3,7 @@
 		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
 			<md-icon>arrow_back</md-icon>
 		</md-button>
-		<h1>Rent your Parking</h1>
+		<h1>Parking Edit</h1>
 	</div>
 	<span flex=""></span>
 </md-toolbar>
@@ -14,7 +14,7 @@
 			<div class="infoBox" layout='row' layout-align="center center">
 				<md-icon>info</md-icon>
 				<div flex style="text-align: center">
-					Create an advert for your car park. 
+					Edit your parking
 				</div>
 			</div>
 		</div>
@@ -25,22 +25,7 @@
 				<md-icon aria-label="Icon" class="material-icons">place</md-icon>
 				
 					<div  layout="row" layout-align="center center">
-					
-						<input vs-google-autocomplete
-        					ng-model="parking.address.name"
-        					vs-place="parking.address.place" 
-        					vs-place-id="parking.address.components.placeId"
-        					vs-street-number="parking.address.components.streetNumber" 
-        					vs-street="parking.address.components.street"
-        					vs-city="parking.address.components.city"
-        					vs-state="parking.address.components.state"
-        					vs-country-short="parking.address.components.countryCode"
-        					vs-country="parking.address.components.country"
-	    					vs-district = "parking.address.components.district"
-	    					vs-latitude = "parking.address.components.location.lat"
-	    					vs-longitude = "parking.address.components.location.long"
-        					name="address"
-        					type="text" style="margin-top:7px; width:50%;">
+						{{parking.address.streetNumber}} {{parking.address.street}} {{parking.address.city}},  {{parking.address.country}}
 					</div>
 				</md-card-content>
 			</md-card>
@@ -110,7 +95,7 @@
 			 </md-card>
 		</div>
 		<div flex-xs flex-gt-xs="50" layout="column" layout-align="center center">
-			<md-button class="md-raised md-primary" ng-click="submit()">Submit</md-button>
+			<md-button class="md-raised md-primary" ng-click="submit()">Edit</md-button>
 		</div>
 	</md-content>	  		
 </div>

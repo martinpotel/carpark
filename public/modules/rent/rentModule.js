@@ -16,7 +16,6 @@ rentModule.controller('RentController', function($scope, $http, $location, $mdTo
 	});
 
 	$scope.submit = function () {
-		console.log($scope.parking);
 		$http.post('/parking/save/', {parking:$scope.parking}).
 			success(function(data, status, headers, config) {
 			$location.path('/');
@@ -30,6 +29,8 @@ rentModule.controller('RentController', function($scope, $http, $location, $mdTo
 
 		
 	$scope.parking = {};
+	$scope.parking.dates = {}
+	$scope.parking.dates.always = false;
 
 	$scope.parking.address = {
 		lib: '',
