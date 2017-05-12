@@ -43,9 +43,11 @@ router.get('/all/', function(req,res) {
 });
 
 router.post('/by-dates/', function(req,res) {
+	if (typeof req.user === 'undefined') var user=null;
+    else user = req.user._id;
 
-
-	var querry = { '$or': [
+	var querry = 
+	{ '$or': [
 		{ 'dates.always': true },
 		{ '$and' : [ 
 			{'dates.end'   : {'$gte': new Date(req.body.start)}}, 
@@ -53,7 +55,7 @@ router.post('/by-dates/', function(req,res) {
 			{'dates.end'   : {'$gte': new Date(req.body.end)  }},
 			{'dates.start' : {'$lte': new Date(req.body.end)  }}
 		]}
-	]};
+	], user: {'$ne':user }};
 
    	console.log(querry);
 

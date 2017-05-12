@@ -1,15 +1,68 @@
-<md-toolbar layout="row" class="fade md-whiteframe-3dp">
+<md-toolbar layout="row" class="md-whiteframe-3dp">
 	<div class="md-toolbar-tools">
-		<md-button class="md-icon-button" aria-label="Retour" ng-href="#/">
-			<md-icon>arrow_back</md-icon>
+		<main-menu-button></main-menu-button>
+		<md-icon>explore</md-icon>
+		<h1>CarParking</h1> 
+		<span flex></span>
+		<md-button ng-if="!user" ng-href="#/login" class="md-raised md-accent">
+			<md-icon>exit_to_app</md-icon>Login
 		</md-button>
-		<h1>Find a Parking</h1> 
+		<md-button ng-if="!user" ng-href="#/register" class="md-raised md-accent">
+			<md-icon>add_box</md-icon>Sign Up
+		</md-button>
+		<md-button ng-if="countReservation>0" ng-href="#/reservations" class="md-raised md-accent">
+			<md-icon>local_parking</md-icon>{{countReservation}}
+		</md-button>
+		<md-button ng-if="countBooking>0" ng-href="#/bookings" class="md-raised md-accent">
+			<md-icon>autorenew</md-icon>{{countBooking}}
+		</md-button>
+		<md-button ng-if="countMsg>0" ng-href="#/messages" class="md-raised md-accent">
+			<md-icon>mail</md-icon>{{countMsg}}
+		</md-button>
 	</div>
-	<span flex=""></span>
 </md-toolbar>
 
 <div layout="column" layout-fill>
 	<md-content class="md-padding" layout-xs="column" layout="column">
+		<!--
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countReservation>0 || countMsg>0 || countBooking>0">
+			<div style="display:block; margin-top:15px;">
+				<div class="infoBox" layout='row' layout-align="center center">
+					<md-icon>info</md-icon>
+					<div flex >
+						Notifications
+					</div>
+				</div>
+			</div>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countReservation>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countReservation}} reservation(s) to accept.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToReservations()">Reservations</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countMsg>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countMsg}} message(s) to read.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToMessages()">Messages</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column" ng-if="countBooking>0">
+			<md-card>
+				<md-card-content layout="rown" layout-align="start start">
+					<h2 class="md-title" style="color:#333;">You have {{countBooking}} booking(s) waiting to be accepted.</h2>
+					<span flex></span>
+					<md-button ng-href="" class="md-raised md-primary" ng-click="goToBookings()">Bookings</md-button>
+				</md-card-content>
+			</md-card>
+		</div>
+		-->
 		<div flex-xs flex-gt-xs="50" layout="column" >
 			<div style="display:block; margin-top:15px;">
 				<div class="infoBox" layout='row' layout-align="center center">
@@ -66,7 +119,7 @@
 
 				<md-card>
 					<md-card-content>
-						<ng-map zoom="12" center="{{map.lat}},{{map.long}}">
+						<ng-map zoom="{{map.zoom}}" center="{{map.lat}},{{map.long}}">
 						    <marker 
 						    	no-watcher="true"
 					  			ng-repeat="p in parkings"

@@ -7,7 +7,7 @@ var findModule = angular.module('findModule', ['ngRoute', 'ngSanitize', 'ngCooki
 /* Routing */
 findModule.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
-		.when('/find', {
+		.when('/', {
 			templateUrl: 'modules/find/partials/home.html',
 			controller: 'FindController'
 		});
@@ -20,24 +20,29 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 
 
 	$scope.map = {};
+	$scope.map.zoom = 6;
 	$scope.address = {};
 	$scope.notifs = true;
 
 	$http.get('/user/logged-user/').success(function(usr){
 		$http.get('/parking/all').success(function(parks) {
-			$scope.parkings = parks;
-			$scope.user = usr;
-			$scope.parkSelected = $scope.parkings[0];
-			$scope.map.lat = $scope.parkSelected.address.location.lat;
-			$scope.map.long = $scope.parkSelected.address.location.long;
 			$http.get('/message/not-read/').success(function(message){
-				$scope.countMsg = message.count;
 				$http.get('/booking/not-confirmed/').success(function(booking){
-					$scope.countBooking = booking.count;
-				});
 					$http.get('/booking/to-confirm/').success(function(resevation){
+						
+						if (typeof usr !== 'undefined' && usr !== 'undefined')$scope.user = usr;
+						else $scope.user = null;
+						
 						$scope.countReservation = resevation.count;
+						$scope.countMsg = message.count;
+						$scope.countBooking = booking.count;
+
+						$scope.map.lat = 53.2734;
+						$scope.map.long = -7.778;
+
+						$scope.parkings = parks;
 					});
+				});
 			});	
 		});	
 	});	
@@ -63,13 +68,14 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 		$scope.parkSelected = p;
 		$scope.map.lat = $scope.parkSelected.address.location.lat;
 		$scope.map.long = $scope.parkSelected.address.location.long;
+		$scope.map.zoom = 12;
 	}
 
 	$scope.showAlert = function(ev, p) {
 		$scope.parkSelected = p;
 		$mdDialog.show({
-			controller: DialogController,
-			templateUrl: 'public/modules/find/partials/dialog1.tmpl.html',
+			controller: ParkingController,
+			templateUrl: 'public/modules/find/partials/parking.tmpl.html',
 			parent: angular.element(document.body),
 			targetEvent: ev,
 			clickOutsideToClose:true,
@@ -78,7 +84,19 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 		});
 	};
 
-	function DialogController($scope, $mdDialog,$location,  p) {
+	$scope.goToMessages = function () {
+	   	$location.path('/messages');
+	}
+
+	$scope.goToBookings = function () {
+	   	$location.path('/bookings');
+	}
+
+	$scope.goToReservations = function () {
+	   	$location.path('/reservations');
+	}
+
+	function ParkingController($scope, $mdDialog,$location,  p) {
 	  	$scope.p = p;
 	  	$http.get('/parking/owner/'+ $scope.p.user).success(function(owner){
 	  		$scope.owner = owner;

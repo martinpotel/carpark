@@ -7,7 +7,7 @@ var homeModule = angular.module('homeModule', ['ngRoute', 'ngSanitize', 'ngCooki
 /* Routing */
 homeModule.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
-		.when('/', {
+		.when('/home', {
 			templateUrl: 'modules/home/partials/home.html',
 			controller: 'HomeController'
 		});
@@ -18,7 +18,6 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 */
 homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', '$location', function($scope, $http,$mdDialog, $location) {
 
-	$scope.notifs = true;
 
 	$http.get('/user/logged-user/').success(function(usr){
 		$http.get('/parking/all').success(function(parks) {
