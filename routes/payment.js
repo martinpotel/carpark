@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Payment route
+*/
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -48,8 +54,10 @@ router.post('/bank-transfer/', function(req,res) {
 	req.body.user._id = new ObjectId(req.body.user._id);
 	console.log('ok');
 
-	db.collection('users').save(req.body.user, function (err, doc) {
-		db.collection('transaction').save(transaction, function (err, doc) {								
+	db.collection('users')
+	.save(req.body.user, function (err, doc) {
+		db.collection('transaction')
+		.save(transaction, function (err, doc) {								
 			res.send(transaction);
 		});
 	});
@@ -77,10 +85,10 @@ router.post('/create/', function (req, res) {
 		},
 		"transactions": [{
 			"amount": {
-				"currency": "USD",
+				"currency": "EUR",
 				"total": req.body.booking.price
 			},
-			"description": "rien a dire"
+			"description": ""
 		}]
 	};
 
@@ -105,16 +113,24 @@ router.post('/create/', function (req, res) {
 			res.send({ 'error': error }); 
 		} else {
 			if (!booking.payed) {
-				db.collection('booking').findOneAndUpdate({_id: new ObjectId(booking._id)}, {$set: {payed:true}}, function(err, result) {
-					db.collection('users').findOne({_id: new ObjectId(booking.owner)}, function(err, user) {
+				db.collection('booking').findOneAndUpdate(
+					{_id: new ObjectId(booking._id)},
+					{$set: {payed:true}
+				}, function(err, result) {
+					db.collection('users').findOne(
+						{_id: new ObjectId(booking.owner)
+					}, function(err, user) {
 						if(user == null) console.log(err);
 						else {
-							if (typeof user.wallet === 'undefined') user.wallet = transaction.amount;
+							if (typeof user.wallet === 'undefined') 
+								user.wallet = transaction.amount;
 							else user.wallet+= transaction.amount;
 							user._id = new ObjectId(user._id);
-							db.collection('users').save(user, function (err, doc) {
+							db.collection('users')
+							.save(user, function (err, doc) {
 								transaction.payment = payment;
-								db.collection('transaction').save(transaction, function (err, doc) {									
+								db.collection('transaction')
+								.save(transaction, function (err, doc) {									
 									res.send(transaction);
 								});
 							});

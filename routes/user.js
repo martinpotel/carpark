@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    User routeÔ
+*/
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -93,7 +99,6 @@ router.post('/create-user/', function (req, res) {
 
     var db = req.app.locals.db;
     req.body.newUser.password = hashpassword.generate(req.body.newUser.password);
-   // console.log(hashpassword.verify( req.body.newUser.passwordConfirm, req.body.newUser.password));
     delete req.body.newUser.passwordConfirm;
     req.body.newUser.admin = false;  
     req.body.newUser.wallet = 0;
@@ -121,10 +126,10 @@ router.get('/Logout', function(req, res){
 
 
 router.post('/update-profile/', function(req,res){
-    console.log(req.body.user);
 
     var db = req.app.locals.db;
     var usersCollection = db.collection('users');
+    req.body.user.password = hashpassword.generate(req.body.user.password);
     var userToSave = req.body.user;
     userToSave._id = new ObjectId(req.body.user._id);
     usersCollection.save(userToSave, function (err, doc) {

@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Main file for angular
+*/
+
 var carparkApp = angular.module('rgeApp', 
 	[
 		'ngRoute', 

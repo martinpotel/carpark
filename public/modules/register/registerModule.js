@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Register controller
+*/
+
 var registerModule = angular.module('registerModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial']);
 
 /* Routing */

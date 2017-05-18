@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Admin stats route
+*/
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');

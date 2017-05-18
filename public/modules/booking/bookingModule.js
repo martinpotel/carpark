@@ -1,3 +1,9 @@
+/**
+	Copyright POTEL Martin --- CarParking
+
+	Booking module controler
+*/
+
 var bookingModule = angular.module('bookingModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial']);
 
 /* Routing */

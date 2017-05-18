@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+	
+	Prifile editing controller
+*/
+
 var profileModule = angular.module('profileModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial']);
 
 /* Routing */

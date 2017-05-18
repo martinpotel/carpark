@@ -1,3 +1,10 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Main NodeJS file
+*/
+
+
 /* Require express components */
 var express = require('express');
 var path = require('path');

@@ -1,5 +1,7 @@
-/*
-	Home page display
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Home module controller
 */
 
 var homeModule = angular.module('homeModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete', 'ngMap']);
@@ -13,9 +15,7 @@ homeModule.config(['$routeProvider', function($routeProvider) {
 		});
 }]);
 
-/*
-	Displays home page and username
-*/
+
 homeModule.controller('HomeController', ['$scope','$http', '$mdDialog', '$location', function($scope, $http,$mdDialog, $location) {
 
 

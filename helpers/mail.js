@@ -1,10 +1,15 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Helper for the sending of the mails
+*/
+
 var ObjectId = require('mongodb').ObjectID;
 var nodemailer = require('nodemailer');
 
-
 exports.prepareMail = function ( to, nameMail, db, callback) {
 
-    console.log('mailtosend:',to);
+    console.log('mailtosend:',to); // the adress mail to send
 
 	db.collection('mail').findOne( {name : nameMail }, function(err, mail) {
 		var transporter = nodemailer.createTransport({
@@ -18,7 +23,7 @@ exports.prepareMail = function ( to, nameMail, db, callback) {
 
 		var mailOptions = {
     		from: 'mrtn.potel@gmail.com', 
-   			to: 'mrtn.potel@gmail.com',
+   			to: 'mrtn.potel@gmail.com', // should be 'to' in production
    			subject: mail.subject,
     		text: mail.contenttext,
     		html: mail.contenthtml

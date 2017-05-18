@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Payment controller
+*/
+
 var paymentModule = angular.module('paymentModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial']);
 
 /* Routing */

@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Booking route
+*/
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -172,7 +178,6 @@ router.get('/user/:id', function(req, res) {
 });
 
 
-/* variables make no sense*/
 router.get('/owner/:id', function(req, res) {
 	var db = req.app.locals.db;
 	var booking = db.collection('booking');

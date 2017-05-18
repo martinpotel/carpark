@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+     Parking route
+*/
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -114,7 +120,8 @@ router.get('/user/:id', function(req, res) {
 
 router.get('/delete/:id', function(req, res) {
 	var db = req.app.locals.db;
-	db.collection('booking').find({parking:req.params.id, 'dates.start': { '$gte': new Date() }, '$or': [ {status:'waiting'}, {status:'accepted'}] }).count(function(err, result) {
+	db.collection('booking').find(
+		{parking:req.params.id, 'dates.start': { '$gte': new Date() }, '$or': [ {status:'waiting'}, {status:'accepted'}] }).count(function(err, result) {
 		if (result <= 0) {
 			db.collection('parking').remove({_id: new ObjectId(req.params.id)}, function(err, result) {
 				res.send('ok');

@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Index route
+*/
+
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;

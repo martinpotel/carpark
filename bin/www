@@ -1,4 +1,10 @@
-#!/usr/bin/env node
+/**
+	Copyright POTEL Martin --- CarParking
+
+	Intisialization and lunch of the server
+*/
+
+
 var debug = require('debug')('myapp');
 var app = require('../app');
 var server = require('http').Server(app);

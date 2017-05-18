@@ -1,3 +1,9 @@
+/**
+    Copyright POTEL Martin --- CarParking
+
+    Login controller
+*/
+
 var loginModule = angular.module('loginModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial']);
 
 /* Routing */
@@ -13,9 +19,6 @@ loginModule.config(['$routeProvider', function($routeProvider) {
 		});
 }]);
 
-/*
-	Displays home page and username
-*/
 loginModule.controller('LoginController', ['$scope', function($scope) {
 	$scope.error = false;
 }]);

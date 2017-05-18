@@ -1,5 +1,7 @@
-/*
-	Home page display
+/**
+	Copyright POTEL Martin --- CarParking
+
+	FIND parking/Home module controler
 */
 
 var findModule = angular.module('findModule', ['ngRoute', 'ngSanitize', 'ngCookies', 'ngMaterial','vsGoogleAutocomplete', 'ngMap', 'credit-cards']);
@@ -13,9 +15,7 @@ findModule.config(['$routeProvider', function($routeProvider) {
 		});
 }]);
 
-/*
-	Displays home page and username
-*/
+
 findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$location', function($scope, $http,$mdDialog, $location) {
 
 
@@ -24,14 +24,21 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 	$scope.address = {};
 	$scope.notifs = true;
 
-	$http.get('/user/logged-user/').success(function(usr){
-		$http.get('/parking/all').success(function(parks) {
-			$http.get('/message/not-read/').success(function(message){
-				$http.get('/booking/not-confirmed/').success(function(booking){
-					$http.get('/booking/to-confirm/').success(function(resevation){
+	$http.get('/user/logged-user/')
+	.success(function(usr){
+		$http.get('/parking/all')
+		.success(function(parks) {
+			$http.get('/message/not-read/')
+			.success(function(message){
+				$http.get('/booking/not-confirmed/')
+				.success(function(booking){
+					$http.get('/booking/to-confirm/')
+					.success(function(resevation){
 						
-						if (typeof usr !== 'undefined' && usr !== 'undefined')$scope.user = usr;
-						else $scope.user = null;
+						if (typeof usr !== 'undefined' && usr !== 'undefined')
+							$scope.user = usr;
+						else 
+							$scope.user = null;
 						
 						$scope.countReservation = resevation.count;
 						$scope.countMsg = message.count;
@@ -98,7 +105,8 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 
 	function ParkingController($scope, $mdDialog,$location,  p) {
 	  	$scope.p = p;
-	  	$http.get('/parking/owner/'+ $scope.p.user).success(function(owner){
+	  	$http.get('/parking/owner/'+ $scope.p.user)
+	  	.success(function(owner){
 	  		$scope.owner = owner;
 	  		$scope.p = p;
 		});	
