@@ -61,9 +61,12 @@
 					</div>
 
 
-				    <div layout="row" layout-align="center center">
+				    <div layout="row" layout-align="center center" ng-if="!process">
 				    	<md-button ng-disabled="!mainLoginForm.$valid && newUser.password===newUser.passwordConfirm" type='submit' class=" md-raised md-hue-1">Submit</md-button>
 					</div>
+					<div ng-if="process" layout="colomn" layout-align="center center" >
+      					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    				</div>
 					<a href="#/login" name="register" style='text-align: center;'>Login</a>
 				</form>
 			<div>

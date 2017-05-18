@@ -24,6 +24,7 @@ registerModule.config(['$routeProvider', function($routeProvider) {
 */
 registerModule.controller('RegisterController', ['$scope' ,'$location','$http', '$mdToast', function($scope,$location,$http,$mdToast) {
 
+	$scope.process = false;
 
 	$scope.checkMail = function () {
 		$http.post('/admin/user-check-info/', {mail:$scope.newUser.mail})
@@ -41,6 +42,7 @@ registerModule.controller('RegisterController', ['$scope' ,'$location','$http', 
 
 
 	$scope.submitForm = function (formvalid) {
+		$scope.process = true;
 		$http.post('/user/create-user/', {newUser:$scope.newUser}).
 			success(function(data, status, headers, config) {
 			$location.path('/login');
