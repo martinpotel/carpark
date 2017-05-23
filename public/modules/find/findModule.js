@@ -62,7 +62,7 @@ findModule.controller('FindController', ['$scope','$http', '$mdDialog', '$locati
 
 		$http.post('/parking/by-dates', dates).success(function(parks) {
 			
-			console.log(parks);
+			$scope.map.zoom = 10;
 			$scope.parkings = parks;
 			$scope.parkSelected = $scope.parkings[0];
 			$scope.map.lat = $scope.parkSelected.address.location.lat;
